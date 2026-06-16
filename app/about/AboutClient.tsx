@@ -118,7 +118,7 @@ export default function AboutClient() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  const bentoCardClass = "glass-capsule shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)] rounded-3xl hover:-translate-y-2 transition-transform duration-300 p-8 relative overflow-hidden group";
+  const bentoCardClass = "glass-capsule bg-gradient-to-br from-accent-teal/5 via-transparent to-accent-coral/5 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)] rounded-3xl hover:-translate-y-2 transition-transform duration-300 p-8 relative overflow-hidden group";
 
   const modalContent = (
     <AnimatePresence>
@@ -229,24 +229,40 @@ export default function AboutClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className={`lg:col-span-8 ${bentoCardClass} flex flex-col justify-center`}
+            className={`lg:col-span-8 ${bentoCardClass} flex flex-col justify-start items-start`}
           >
-            <h2 className="text-2xl font-bold text-foreground mb-8 border-l-4 border-accent-teal pl-4">
+            <h2 className="text-2xl font-bold text-foreground mb-8">
               {t("about.tech.title")}
             </h2>
-            <div className="flex flex-wrap gap-8 md:gap-10">
-              {[...techStack, ...toolsPlatforms].map((tech, idx) => (
-                <div key={tech.name} className="relative flex flex-col items-center group/icon cursor-pointer">
-                  <Image
-                    src={tech.url}
-                    alt={tech.name}
-                    width={48}
-                    height={48}
-                    className="w-12 h-12 md:w-16 md:h-16 drop-shadow-sm group-hover/icon:scale-110 group-hover/icon:-translate-y-2 transition-all duration-300"
-                  />
-                  <span className="absolute -bottom-6 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300 text-xs font-medium text-foreground/70 whitespace-nowrap">
-                    {tech.name}
-                  </span>
+            <div className="flex flex-col gap-10 w-full">
+              {[
+                {
+                  title: "Languages & Frameworks",
+                  items: [...techStack, ...toolsPlatforms].filter((t) => ["React", "Next.js", "Laravel", "Flutter", "Tailwind CSS", "JavaScript", "PHP", "CodeIgniter", "Dart", "Three.js"].includes(t.name))
+                },
+                {
+                  title: "Tools",
+                  items: [...techStack, ...toolsPlatforms].filter((t) => ["MySQL", "Figma", "Git", "GitHub", "Arduino", "Vercel", "VS Code"].includes(t.name))
+                }
+              ].map((group) => (
+                <div key={group.title} className="flex flex-col items-start text-left w-full">
+                  <h3 className="text-sm font-semibold text-foreground/60 uppercase tracking-wider mb-6">{group.title}</h3>
+                  <div className="flex flex-wrap gap-8 md:gap-10">
+                    {group.items.map((tech) => (
+                      <div key={tech.name} className="relative flex flex-col items-center group/icon cursor-pointer">
+                        <Image
+                          src={tech.url}
+                          alt={tech.name}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 md:w-16 md:h-16 drop-shadow-sm group-hover/icon:scale-110 group-hover/icon:-translate-y-2 transition-all duration-300"
+                        />
+                        <span className="absolute -bottom-6 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300 text-xs font-medium text-foreground/70 whitespace-nowrap">
+                          {tech.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -260,7 +276,7 @@ export default function AboutClient() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className={`lg:col-span-4 ${bentoCardClass} flex flex-col`}
           >
-            <h2 className="text-2xl font-bold text-foreground mb-8 border-l-4 border-accent-coral pl-4">
+            <h2 className="text-2xl font-bold text-foreground mb-8">
               {t("about.journey.title")}
             </h2>
             <div className="relative ml-2 space-y-8 flex-1">
@@ -282,9 +298,9 @@ export default function AboutClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className={`lg:col-span-12 ${bentoCardClass}`}
+            className="lg:col-span-12 flex flex-col mt-4"
           >
-            <h2 className="text-2xl font-bold text-foreground mb-8 border-l-4 border-accent-yellow pl-4">
+            <h2 className="text-2xl font-bold text-foreground mb-8">
               Certificates & Achievements
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -292,7 +308,7 @@ export default function AboutClient() {
                 <div 
                   key={cert.id} 
                   onClick={() => setActiveCert(cert)}
-                  className="group/cert cursor-pointer bg-foreground/5 hover:bg-foreground/10 border border-foreground/5 rounded-2xl p-4 transition-all duration-300 flex flex-col gap-4"
+                  className="group/cert cursor-pointer glass-capsule bg-gradient-to-br from-accent-teal/5 via-transparent to-accent-coral/5 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)] rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-2 flex flex-col gap-4"
                 >
                   <div className="w-full aspect-[4/3] rounded-xl overflow-hidden relative bg-foreground/5 flex items-center justify-center">
                     {cert.type === "image" ? (

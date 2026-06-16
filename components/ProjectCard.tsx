@@ -19,7 +19,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.3 }}
-        className="group relative flex flex-col justify-between p-8 glass-capsule shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)] rounded-3xl hover:-translate-y-2 transition-transform duration-300 overflow-hidden min-h-[380px] h-full"
+        className="group relative flex flex-col justify-between p-8 glass-capsule bg-gradient-to-br from-accent-teal/5 via-transparent to-accent-coral/5 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)] rounded-3xl hover:-translate-y-2 transition-transform duration-300 overflow-hidden min-h-[380px] h-full"
       >
         <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-300">
           <div className="p-3 bg-foreground rounded-full text-background shadow-lg">

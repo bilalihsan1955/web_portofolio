@@ -93,7 +93,7 @@ export default function ProjectDetail() {
           <div className="relative z-10 flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
             
             {/* Sidebar / Meta Information */}
-            <div className="w-full lg:w-1/3 flex flex-col space-y-8 lg:sticky lg:top-8 h-fit">
+            <div className="w-full lg:w-1/3 flex flex-col space-y-8 lg:sticky lg:top-0 h-fit">
               <div>
                 <span className="text-accent-coral font-medium text-sm md:text-base tracking-widest uppercase inline-block px-4 py-1.5 rounded-full bg-accent-coral/10 border border-accent-coral/20 mb-6">
                   {project.category}

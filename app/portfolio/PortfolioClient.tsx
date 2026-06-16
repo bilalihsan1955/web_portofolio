@@ -51,7 +51,7 @@ export default function Portfolio() {
       <div className="pt-32 pb-16 min-h-screen px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden relative">
         <div className="relative z-10 flex flex-col items-center text-center space-y-6">
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground">
-            {t("portfolio.title")}
+            {t("portfolio.title").split(" ")[0]} <span className="text-accent-teal">{t("portfolio.title").split(" ")[1]}</span>
           </h1>
           <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl font-light">
             {t("portfolio.desc")}
