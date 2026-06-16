@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider, LanguageProvider } from "./providers";
 import FloatingLanguageToggle from "@/components/FloatingLanguageToggle";
+import GlobalLoader from "@/components/GlobalLoader";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col font-sans transition-colors duration-300">
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
           <LanguageProvider>
+            <GlobalLoader />
             <Navbar />
             <main className="flex-grow">{children}</main>
             <Footer />

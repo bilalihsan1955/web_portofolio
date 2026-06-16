@@ -146,7 +146,7 @@ export default function Home() {
         </section>
 
         {/* Featured Projects Section */}
-        <div className="relative z-10 w-full mb-32">
+        <div className="relative z-10 w-full">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("home.featured.title")}</h2>
@@ -195,7 +195,7 @@ export default function Home() {
         </div>
 
         {/* Tech Stack & Tools Section */}
-        <div className="relative z-10 border-t border-foreground/10 pt-8 md:pt-12 overflow-hidden w-full">
+        <div className="relative z-10 mt-12 md:mt-20 lg:mt-24 border-t border-foreground/10 pt-8 md:pt-12 overflow-hidden w-full">
 
           {/* Tech Stack */}
           <div className="mb-4 md:mb-6">
