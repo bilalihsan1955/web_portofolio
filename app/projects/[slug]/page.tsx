@@ -13,7 +13,7 @@ import ProjectGallery from "@/components/ProjectGallery";
 export default function ProjectDetail() {
   const params = useParams();
   const pathname = usePathname();
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   
   const slug = params.slug as string;
   const project = projects.find(p => p.slug === slug);
@@ -130,7 +130,10 @@ export default function ProjectDetail() {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background font-bold rounded-full transition-transform hover:scale-105 shadow-xl w-full"
                   >
-                    <ExternalLink className="w-5 h-5" /> Live Demo
+                    <ExternalLink className="w-5 h-5" /> 
+                    {project.liveDemoLink.includes("play.google.com") 
+                      ? t("project.btn.playstore" as any) 
+                      : t("project.btn.website" as any)}
                   </Link>
                 )}
                 {project.repositoryLink && (

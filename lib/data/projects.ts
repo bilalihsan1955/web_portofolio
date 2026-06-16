@@ -22,18 +22,19 @@ export const projects: ProjectData[] = [
   {
     id: 1,
     slug: "smartkampung",
-    title: "Smartkampung Mobile App",
+    title: "Banyuwangi Smartkampung",
     category: "Mobile",
-    role: "Lead Mobile Developer",
-    techStack: ["Flutter", "Dart", "Firebase", "REST API", "Figma"],
+    role: "Mobile Developer (UI & API Integration)",
+    techStack: ["Flutter", "REST API"],
     shortSummary: {
-      EN: "A comprehensive mobile application built with Flutter, focusing on seamless UI/UX and stable performance for community management.",
-      ID: "Aplikasi seluler komprehensif yang dibangun dengan Flutter, berfokus pada UI/UX yang mulus dan kinerja stabil untuk manajemen komunitas."
+      EN: "A public service Super App for Banyuwangi Regency, enabling citizens to process population administration, village certificates, and local taxes directly from their mobile devices.",
+      ID: "Super App pelayanan publik Kabupaten Banyuwangi untuk memudahkan warga mengurus administrasi kependudukan, surat desa, dan pajak daerah langsung dari perangkat mobile."
     },
     fullDescription: {
-      EN: "Smartkampung is an innovative community management platform designed to connect residents and local administrators. The app features robust digital services, real-time announcements, secure payment gateways for local dues, and an SOS feature. I led the mobile development using Flutter, ensuring a high-performance cross-platform experience with complex state management and seamless REST API integrations.",
-      ID: "Smartkampung adalah platform manajemen komunitas inovatif yang dirancang untuk menghubungkan warga dan administrator lokal. Aplikasi ini menampilkan layanan digital yang kuat, pengumuman real-time, gateway pembayaran aman untuk iuran lokal, dan fitur SOS. Saya memimpin pengembangan seluler menggunakan Flutter, memastikan pengalaman lintas platform berkinerja tinggi dengan manajemen state yang kompleks dan integrasi REST API yang mulus."
+      EN: "Smartkampung is an official government application developed to digitalize public services across villages in Banyuwangi. My role was strictly focused on the mobile frontend development, which involved building cross-platform user interfaces with Flutter, integrating the existing REST APIs provided by the government, and monitoring application stability to cut physical queues.",
+      ID: "Smartkampung adalah aplikasi resmi pemerintah yang dikembangkan untuk mendigitalisasi pelayanan publik hingga ke tingkat desa di Kabupaten Banyuwangi. Peran saya sepenuhnya berfokus pada pengembangan frontend mobile, yang meliputi pembuatan antarmuka lintas platform menggunakan Flutter, integrasi dengan REST API yang sudah disediakan oleh pihak pemerintah, serta pemantauan stabilitas aplikasi untuk memangkas antrean fisik."
     },
+    liveDemoLink: "https://play.google.com/store/apps/details?id=id.smartkampung.app",
     imageAssets: [
       "https://picsum.photos/seed/smartkampung1/800/600",
       "https://picsum.photos/seed/smartkampung2/800/600",
