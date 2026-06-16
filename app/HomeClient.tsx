@@ -5,7 +5,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { ViewTransition } from "react";
+import { ViewTransition, useRef, useEffect, useState } from "react";
 import { useLanguage } from "@/app/providers";
 import { projects } from "@/lib/data/projects";
 
@@ -39,6 +39,30 @@ export default function Home() {
   const pathname = usePathname();
   const { t, language } = useLanguage();
 
+  const techOuterRef = useRef<HTMLDivElement>(null);
+  const techInnerRef = useRef<HTMLDivElement>(null);
+  const toolsOuterRef = useRef<HTMLDivElement>(null);
+  const toolsInnerRef = useRef<HTMLDivElement>(null);
+  
+  const [techOverflow, setTechOverflow] = useState(false);
+  const [toolsOverflow, setToolsOverflow] = useState(false);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (techOuterRef.current && techInnerRef.current) {
+        setTechOverflow(techInnerRef.current.scrollWidth > techOuterRef.current.clientWidth);
+      }
+      if (toolsOuterRef.current && toolsInnerRef.current) {
+        setToolsOverflow(toolsInnerRef.current.scrollWidth > toolsOuterRef.current.clientWidth);
+      }
+    };
+    
+    // Initial check
+    setTimeout(checkOverflow, 50);
+    window.addEventListener("resize", checkOverflow);
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, []);
+
   return (
     <ViewTransition enter="fade-in" exit="fade-out" default="none">
       {/* Massive Poster Background - Home */}
@@ -67,7 +91,7 @@ export default function Home() {
 
       <div className="flex flex-col px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
 
-        <section className="relative flex flex-col items-center justify-center min-h-screen pt-20 pb-16 w-full">
+        <section className="relative flex flex-col items-center justify-center min-h-screen pt-32 pb-16 w-full">
           {/* Soft Blobs */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center opacity-30 dark:opacity-20">
             <div className="w-96 h-96 rounded-full bg-accent-coral/20 blur-3xl" />
@@ -171,19 +195,22 @@ export default function Home() {
         </div>
 
         {/* Tech Stack & Tools Section */}
-        <div className="relative z-10 border-t border-foreground/10 pt-16 overflow-hidden w-full">
+        <div className="relative z-10 border-t border-foreground/10 pt-8 md:pt-12 overflow-hidden w-full">
 
           {/* Tech Stack */}
-          <div className="mb-20">
-            <p className="text-center text-sm font-semibold text-foreground/50 uppercase tracking-widest mb-10">
+          <div className="mb-4 md:mb-6">
+            <p className="text-center text-sm font-semibold text-foreground/50 uppercase tracking-widest mb-3 md:mb-4">
               {t("home.tech.title")}
             </p>
-            {techStack.length > 8 ? (
-              <div className="relative w-full py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] group">
-                <div
-                  className="flex flex-row flex-nowrap items-center gap-12 w-max animate-marquee group-hover:[animation-play-state:paused]"
-                >
-                  {[...techStack, ...techStack].map((tech, idx) => (
+            <div 
+              ref={techOuterRef}
+              className={`relative w-full py-2 md:py-4 overflow-hidden group ${techOverflow ? '[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]' : ''}`}
+            >
+              <div
+                className={`flex flex-row flex-nowrap items-center gap-6 md:gap-10 ${techOverflow ? 'w-max animate-marquee group-hover:[animation-play-state:paused]' : 'w-full justify-center mx-auto'}`}
+              >
+                <div ref={techInnerRef} className="flex flex-row flex-nowrap items-center gap-6 md:gap-10 shrink-0">
+                  {techStack.map((tech, idx) => (
                     <div key={`${tech.name}-${idx}`} className="flex flex-col items-center gap-3 group/item w-24 shrink-0">
                       <Image
                         src={tech.url}
@@ -198,38 +225,42 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-              </div>
-            ) : (
-              <div className="flex flex-wrap justify-center items-center gap-12 py-8">
-                {techStack.map((tech, idx) => (
-                  <div key={`${tech.name}-${idx}`} className="flex flex-col items-center gap-3 group/item w-24">
-                    <Image
-                      src={tech.url}
-                      alt={tech.name}
-                      width={48}
-                      height={48}
-                      className="w-12 h-12 md:w-16 md:h-16 filter grayscale opacity-70 group-hover/item:grayscale-0 group-hover/item:opacity-100 group-hover/item:scale-125 transition-all duration-300"
-                    />
-                    <span className="text-xs font-medium text-foreground/60 opacity-0 group-hover/item:opacity-100 transition-opacity whitespace-nowrap">
-                      {tech.name}
-                    </span>
+                {techOverflow && (
+                  <div className="flex flex-row flex-nowrap items-center gap-6 md:gap-10 shrink-0">
+                    {techStack.map((tech, idx) => (
+                      <div key={`${tech.name}-dup-${idx}`} className="flex flex-col items-center gap-3 group/item w-24 shrink-0">
+                        <Image
+                          src={tech.url}
+                          alt={tech.name}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 md:w-16 md:h-16 filter grayscale opacity-70 group-hover/item:grayscale-0 group-hover/item:opacity-100 group-hover/item:scale-125 transition-all duration-300"
+                        />
+                        <span className="text-xs font-medium text-foreground/60 opacity-0 group-hover/item:opacity-100 transition-opacity whitespace-nowrap">
+                          {tech.name}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                )}
               </div>
-            )}
+            </div>
           </div>
 
           {/* Tools & Platforms */}
           <div>
-            <p className="text-center text-sm font-semibold text-foreground/50 uppercase tracking-widest mb-10">
+            <p className="text-center text-sm font-semibold text-foreground/50 uppercase tracking-widest mb-3 md:mb-4">
               {t("home.tools.title")}
             </p>
-            {toolsPlatforms.length > 8 ? (
-              <div className="relative w-full py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] group">
-                <div
-                  className="flex flex-row flex-nowrap items-center gap-12 w-max animate-marquee-slow group-hover:[animation-play-state:paused]"
-                >
-                  {[...toolsPlatforms, ...toolsPlatforms].map((tool, idx) => (
+            <div 
+              ref={toolsOuterRef}
+              className={`relative w-full py-2 md:py-4 overflow-hidden group ${toolsOverflow ? '[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]' : ''}`}
+            >
+              <div
+                className={`flex flex-row flex-nowrap items-center gap-6 md:gap-10 ${toolsOverflow ? 'w-max animate-marquee-slow group-hover:[animation-play-state:paused]' : 'w-full justify-center mx-auto'}`}
+              >
+                <div ref={toolsInnerRef} className="flex flex-row flex-nowrap items-center gap-6 md:gap-10 shrink-0">
+                  {toolsPlatforms.map((tool, idx) => (
                     <div key={`${tool.name}-${idx}`} className="flex flex-col items-center gap-3 group/item w-24 shrink-0">
                       <Image
                         src={tool.url}
@@ -244,25 +275,26 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-              </div>
-            ) : (
-              <div className="flex flex-wrap justify-center items-center gap-12 py-8">
-                {toolsPlatforms.map((tool, idx) => (
-                  <div key={`${tool.name}-${idx}`} className="flex flex-col items-center gap-3 group/item w-24">
-                    <Image
-                      src={tool.url}
-                      alt={tool.name}
-                      width={48}
-                      height={48}
-                      className="w-12 h-12 md:w-16 md:h-16 filter grayscale opacity-70 group-hover/item:grayscale-0 group-hover/item:opacity-100 group-hover/item:scale-125 transition-all duration-300"
-                    />
-                    <span className="text-xs font-medium text-foreground/60 opacity-0 group-hover/item:opacity-100 transition-opacity whitespace-nowrap">
-                      {tool.name}
-                    </span>
+                {toolsOverflow && (
+                  <div className="flex flex-row flex-nowrap items-center gap-6 md:gap-10 shrink-0">
+                    {toolsPlatforms.map((tool, idx) => (
+                      <div key={`${tool.name}-dup-${idx}`} className="flex flex-col items-center gap-3 group/item w-24 shrink-0">
+                        <Image
+                          src={tool.url}
+                          alt={tool.name}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 md:w-16 md:h-16 filter grayscale opacity-70 group-hover/item:grayscale-0 group-hover/item:opacity-100 group-hover/item:scale-125 transition-all duration-300"
+                        />
+                        <span className="text-xs font-medium text-foreground/60 opacity-0 group-hover/item:opacity-100 transition-opacity whitespace-nowrap">
+                          {tool.name}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                )}
               </div>
-            )}
+            </div>
           </div>
 
         </div>
