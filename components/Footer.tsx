@@ -13,16 +13,16 @@ export default function Footer() {
         </p>
         <div className="flex flex-col md:flex-row items-center divide-y md:divide-y-0 md:divide-x divide-foreground/10 w-[90%] md:w-auto mx-auto md:mx-0 md:ml-auto gap-y-4 md:gap-y-0">
           <div className="flex items-center justify-center gap-6 md:gap-8 pb-4 md:pb-0 md:pr-6 w-full md:w-auto">
-            <Link href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-black/10 border border-black/20 dark:bg-white/[0.03] dark:border-white/[0.05] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-black/20 dark:hover:bg-white/[0.08] hover:scale-110">
+            <Link href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-foreground/10 hover:scale-110">
               <Github className="w-5 h-5 text-foreground/70" />
             </Link>
-            <Link href="https://www.linkedin.com/in/bilalalihsan" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-black/10 border border-black/20 dark:bg-white/[0.03] dark:border-white/[0.05] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-black/20 dark:hover:bg-white/[0.08] hover:scale-110">
+            <Link href="https://www.linkedin.com/in/bilalalihsan" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-foreground/10 hover:scale-110">
               <Linkedin className="w-5 h-5 text-foreground/70" />
             </Link>
-            <Link href="mailto:contact@example.com" className="flex items-center justify-center w-10 h-10 rounded-full bg-black/10 border border-black/20 dark:bg-white/[0.03] dark:border-white/[0.05] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-black/20 dark:hover:bg-white/[0.08] hover:scale-110">
+            <Link href="mailto:contact@example.com" className="flex items-center justify-center w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-foreground/10 hover:scale-110">
               <Mail className="w-5 h-5 text-foreground/70" />
             </Link>
-            <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-black/10 border border-black/20 dark:bg-white/[0.03] dark:border-white/[0.05] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-black/20 dark:hover:bg-white/[0.08] hover:scale-110">
+            <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-foreground/10 hover:scale-110">
               <Instagram className="w-5 h-5 text-foreground/70" />
             </Link>
           </div>
