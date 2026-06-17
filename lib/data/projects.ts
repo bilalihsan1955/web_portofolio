@@ -129,5 +129,25 @@ export const projects: ProjectData[] = [
       "https://picsum.photos/seed/smartkampung3/800/600",
       "https://picsum.photos/seed/smartkampung4/800/600"
     ]
+  },
+  {
+    id: 6,
+    slug: "mustaka",
+    title: "Mustaka",
+    category: "Web",
+    role: "Web Developer",
+    techStack: ["Next.js", "Tailwind CSS", "Three.js"],
+    shortSummary: {
+      EN: "An interactive and immersive web application designed to introduce the legendary history of Ken Arok & Ken Dedes through modern UI/UX and rich animations.",
+      ID: "Platform web interaktif yang memperkenalkan kisah sejarah legendaris Ken Arok & Ken Dedes dengan pendekatan UI/UX yang imersif dan modern."
+    },
+    fullDescription: {
+      EN: "Mustaka is an interactive web experience designed to introduce the historical and legendary figures of Ken Arok and Ken Dedes using modern, immersive web elements. Built with Next.js, Tailwind CSS, and Three.js, it delivers a deeply engaging journey through Indonesian history, bridging the gap between cultural heritage and cutting-edge web technology.",
+      ID: "Mustaka adalah pengalaman web interaktif yang dirancang untuk memperkenalkan tokoh sejarah dan legendaris Ken Arok dan Ken Dedes menggunakan elemen web modern dan imersif. Dibangun dengan Next.js, Tailwind CSS, dan Three.js, platform ini menghadirkan perjalanan yang mendalam melalui sejarah Indonesia, menjembatani warisan budaya dengan teknologi web mutakhir."
+    },
+    liveDemoLink: "https://mustaka.co.id/",
+    imageAssets: [
+      "https://picsum.photos/seed/mustaka/800/600"
+    ]
   }
 ];
