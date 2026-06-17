@@ -58,7 +58,7 @@ export default function Portfolio() {
           </p>
 
           {/* Category Filters (Segmented Control) */}
-          <div className="inline-flex flex-wrap items-center justify-center p-1.5 gap-1 glass-capsule shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)] rounded-full mt-10">
+          <div className="inline-flex flex-wrap items-center justify-center p-1.5 gap-1 bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full mt-10">
             {categories.map((category) => (
               <button
                 key={category}

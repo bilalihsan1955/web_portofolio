@@ -9,7 +9,7 @@ export function LanguageToggleUI() {
   return (
     <button
       onClick={() => setLanguage(language === "EN" ? "ID" : "EN")}
-      className="flex items-center gap-2 px-4 py-2 rounded-full glass-capsule hover:scale-105 hover:bg-foreground/5 transition-all duration-300 shadow-lg cursor-pointer"
+      className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:scale-105 hover:bg-foreground/5 transition-all duration-300 cursor-pointer"
       aria-label={`Switch to ${language === "EN" ? "Indonesian" : "English"}`}
     >
       <Globe className="w-5 h-5 text-accent-teal" />

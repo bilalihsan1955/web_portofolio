@@ -166,7 +166,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group relative flex flex-col justify-between p-8 md:p-10 glass-capsule bg-gradient-to-br from-accent-teal/5 via-transparent to-accent-coral/5 rounded-3xl hover:scale-[1.02] transition-transform duration-300 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)] overflow-hidden min-h-[320px] h-full"
+                  className="group relative flex flex-col justify-between p-8 md:p-10 bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] hover:scale-[1.02] transition-transform duration-300 overflow-hidden min-h-[320px] h-full"
                 >
                   <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-300">
                     <div className="p-3 bg-foreground rounded-full text-background">
@@ -199,7 +199,7 @@ export default function Home() {
 
           {/* Tech Stack */}
           <div className="mb-4 md:mb-6">
-            <p className="text-center text-sm font-semibold text-foreground/50 uppercase tracking-widest mb-3 md:mb-4">
+            <p className="text-center text-sm font-semibold text-foreground/50 tracking-wide capitalize mb-3 md:mb-4">
               {t("home.tech.title")}
             </p>
             <div 
@@ -249,7 +249,7 @@ export default function Home() {
 
           {/* Tools & Platforms */}
           <div>
-            <p className="text-center text-sm font-semibold text-foreground/50 uppercase tracking-widest mb-3 md:mb-4">
+            <p className="text-center text-sm font-semibold text-foreground/50 tracking-wide capitalize mb-3 md:mb-4">
               {t("home.tools.title")}
             </p>
             <div 

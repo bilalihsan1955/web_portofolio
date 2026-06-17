@@ -31,7 +31,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed top-6 inset-x-0 z-50 px-4 md:px-6 lg:px-8 w-full">
-        <nav className="w-full max-w-7xl mx-auto rounded-full px-6 md:px-8 py-4 glass-capsule flex justify-between items-center transition-all duration-300 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)]">
+        <nav className="w-full max-w-7xl mx-auto rounded-full px-6 md:px-8 py-4 bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex justify-between items-center transition-all duration-300">
           <div className="flex-shrink-0 flex items-center">
           <Link href="/" className="text-2xl font-bold tracking-tight text-foreground hover:text-accent-teal transition-colors">
             Bilal.
@@ -92,7 +92,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="md:hidden fixed top-24 left-1/2 -translate-x-1/2 w-11/12 max-w-sm glass-capsule rounded-3xl p-4 z-40 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)]"
+            className="md:hidden fixed top-24 left-1/2 -translate-x-1/2 w-11/12 max-w-sm bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl p-4 z-40"
           >
             <div className="flex flex-col space-y-2">
               {navLinks.map((link) => {

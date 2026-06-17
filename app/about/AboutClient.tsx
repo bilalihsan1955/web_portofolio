@@ -7,7 +7,7 @@ import { ViewTransition } from "react";
 import { useLanguage } from "@/app/providers";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { FileText, X } from "lucide-react";
+import { FileText, X, Images, ChevronLeft, ChevronRight } from "lucide-react";
 
 const techStack = [
   { name: "MySQL", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
@@ -58,33 +58,20 @@ interface Certificate {
   issuer: string;
   date: string;
   type: CertificateType;
-  url: string;
+  images: string[];
 }
 
 const mockCertificates: Certificate[] = [
   {
     id: 1,
-    title: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services",
-    date: "2023",
+    title: "Sertifikat BNSP Mobile Programmer",
+    issuer: "BNSP",
+    date: "2024",
     type: "image",
-    url: "https://picsum.photos/seed/cert1/800/600"
-  },
-  {
-    id: 2,
-    title: "Flutter Development Bootcamp",
-    issuer: "Udemy",
-    date: "2022",
-    type: "pdf",
-    url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-  },
-  {
-    id: 3,
-    title: "React Native Masterclass",
-    issuer: "Coursera",
-    date: "2022",
-    type: "image",
-    url: "https://picsum.photos/seed/cert3/800/600"
+    images: [
+      "/certificate/Sertifikat_BNSP_Mobile_Bilal%20Al%20Ihsan_TTD_page-0001.jpg",
+      "/certificate/Sertifikat_BNSP_Mobile_Bilal%20Al%20Ihsan_TTD_page-0002.jpg"
+    ]
   }
 ];
 
@@ -92,7 +79,8 @@ export default function AboutClient() {
   const pathname = usePathname();
   const { t } = useLanguage();
   
-  const [activeCert, setActiveCert] = useState<Certificate | null>(null);
+  const [selectedCertIndex, setSelectedCertIndex] = useState<number | null>(null);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -101,44 +89,87 @@ export default function AboutClient() {
 
   // Lock body scroll when modal is open
   useEffect(() => {
-    if (activeCert) {
+    if (selectedCertIndex !== null) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
     return () => { document.body.style.overflow = "unset"; };
-  }, [activeCert]);
+  }, [selectedCertIndex]);
 
   // Handle escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setActiveCert(null);
+      if (e.key === "Escape") {
+        setSelectedCertIndex(null);
+        setCurrentPhotoIndex(0);
+      }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  const bentoCardClass = "glass-capsule bg-gradient-to-br from-accent-teal/5 via-transparent to-accent-coral/5 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)] rounded-3xl hover:-translate-y-2 transition-transform duration-300 p-8 relative overflow-hidden group";
+
+
+  const selectedCert = selectedCertIndex !== null ? mockCertificates.find(c => c.id === selectedCertIndex) : null;
+
+  const closeCertModal = () => {
+    setSelectedCertIndex(null);
+    setCurrentPhotoIndex(0);
+  };
+
+  const nextPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedCert) setCurrentPhotoIndex(prev => (prev === selectedCert.images.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedCert) setCurrentPhotoIndex(prev => (prev === 0 ? selectedCert.images.length - 1 : prev - 1));
+  };
 
   const modalContent = (
     <AnimatePresence>
-      {activeCert && (
+      {selectedCert && (
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center p-4 md:p-12 bg-black/90 backdrop-blur-xl"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center p-4 bg-black/90 backdrop-blur-md"
         >
+          {/* Close Button */}
           <button 
-            onClick={() => setActiveCert(null)}
+            onClick={closeCertModal}
             className="absolute top-6 right-6 z-[10000] p-3 md:p-4 bg-white/10 hover:bg-white/20 text-white border border-white/10 rounded-full backdrop-blur-md transition-all duration-300 hover:scale-110 shadow-xl"
           >
             <X className="w-6 h-6 md:w-8 md:h-8"/>
           </button>
 
-          <div className="relative w-full max-w-6xl h-[85vh] flex flex-col items-center justify-center">
-            {activeCert.type === "image" ? (
+          {selectedCert.images.length > 1 && (
+            <>
+              {/* Previous Arrow */}
+              <button 
+                onClick={prevPhoto}
+                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-[10000] w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-xl transition-all hover:scale-110 hover:bg-white/10 shadow-xl text-white"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              {/* Next Arrow */}
+              <button 
+                onClick={nextPhoto}
+                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-[10000] w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-xl transition-all hover:scale-110 hover:bg-white/10 shadow-xl text-white"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </>
+          )}
+
+          {/* Image Container - Borderless & Massive */}
+          <div className="relative w-full max-w-[90vw] h-[80vh] md:h-[85vh] flex flex-col items-center justify-center">
+            <AnimatePresence mode="wait">
               <motion.div
+                key={currentPhotoIndex}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
@@ -146,32 +177,15 @@ export default function AboutClient() {
                 className="w-full h-full relative"
               >
                 <Image 
-                  alt={activeCert.title} 
+                  alt={`${selectedCert.title} - Page ${currentPhotoIndex + 1}`} 
                   className="object-contain drop-shadow-2xl" 
                   fill 
                   sizes="90vw" 
-                  src={activeCert.url}
+                  src={selectedCert.images[currentPhotoIndex]}
                   priority
                 />
               </motion.div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.05 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="w-full h-full relative bg-white rounded-2xl overflow-hidden"
-              >
-                <iframe src={activeCert.url} className="w-full h-full border-none" title={activeCert.title} />
-              </motion.div>
-            )}
-            
-            <div className="absolute -bottom-12 md:-bottom-16 left-0 right-0 text-center">
-              <p className="text-lg md:text-xl font-light text-white tracking-wide">{activeCert.title}</p>
-              <p className="text-sm font-medium text-white/50 mt-1 uppercase tracking-widest">
-                {activeCert.issuer} • {activeCert.date}
-              </p>
-            </div>
+            </AnimatePresence>
           </div>
         </motion.div>
       )}
@@ -213,14 +227,34 @@ export default function AboutClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className={`lg:col-span-12 flex flex-col items-center text-center mb-8`}
+            className="lg:col-span-12 py-12 lg:py-24"
           >
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight text-foreground relative z-10">
-              {t("about.title")} <span className="text-accent-teal">Me.</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed font-light max-w-5xl relative z-10">
-              {t("about.bio")}
-            </p>
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 w-full max-w-6xl mx-auto">
+              
+              {/* Photo Column */}
+              <div className="flex-shrink-0 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[350px]">
+                <div className="w-full h-80 lg:h-[400px] relative bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] cursor-pointer group overflow-hidden">
+                  <Image 
+                    src="/images/bilal.png"
+                    alt="Bilal Ihsan"
+                    fill
+                    className="object-cover w-full h-full"
+                    priority
+                  />
+                </div>
+              </div>
+
+              {/* Text Column */}
+              <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8 tracking-tight text-foreground relative z-10">
+                  {t("about.title")} <span className="text-accent-teal">Me.</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed font-light relative z-10 max-w-3xl">
+                  {t("about.bio")}
+                </p>
+              </div>
+
+            </div>
           </motion.div>
 
           {/* 2. Tech Stack - Spans 8 Cols */}
@@ -229,7 +263,7 @@ export default function AboutClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className={`lg:col-span-8 ${bentoCardClass} flex flex-col justify-start items-start`}
+            className={`lg:col-span-8 flex flex-col justify-start items-start py-8`}
           >
             <h2 className="text-2xl font-bold text-foreground mb-8">
               {t("about.tech.title")}
@@ -246,7 +280,7 @@ export default function AboutClient() {
                 }
               ].map((group) => (
                 <div key={group.title} className="flex flex-col items-start text-left w-full">
-                  <h3 className="text-sm font-semibold text-foreground/60 uppercase tracking-wider mb-6">{group.title}</h3>
+                  <h3 className="text-sm font-semibold text-foreground/60 capitalize tracking-wide mb-6">{group.title}</h3>
                   <div className="flex flex-wrap gap-8 md:gap-10">
                     {group.items.map((tech) => (
                       <div key={tech.name} className="relative flex flex-col items-center group/icon cursor-pointer">
@@ -274,19 +308,17 @@ export default function AboutClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className={`lg:col-span-4 ${bentoCardClass} flex flex-col`}
+            className={`lg:col-span-4 flex flex-col py-8`}
           >
             <h2 className="text-2xl font-bold text-foreground mb-8">
               {t("about.journey.title")}
             </h2>
-            <div className="relative ml-2 space-y-8 flex-1">
-              <div className="absolute top-2 bottom-2 left-[3px] w-1 bg-foreground/10 rounded-full" />
+            <div className="flex flex-col gap-12">
               {timeline.map((item, idx) => (
-                <div key={idx} className="relative pl-8">
-                  <div className="absolute w-2.5 h-2.5 bg-accent-coral rounded-full -left-[3px] top-1.5 ring-4 ring-background"></div>
-                  <span className="text-xs font-bold text-accent-coral tracking-widest uppercase">{item.year}</span>
-                  <h3 className="text-lg font-bold text-foreground mt-1 mb-1">{item.title}</h3>
-                  <p className="text-foreground/70 text-sm leading-relaxed">{item.description}</p>
+                <div key={idx} className="flex flex-col">
+                  <span className="text-sm font-bold text-accent-coral tracking-wide mb-2">{item.year}</span>
+                  <h3 className="text-xl font-bold text-foreground mb-2 tracking-tight">{item.title}</h3>
+                  <p className="text-foreground/60 text-base leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -307,21 +339,23 @@ export default function AboutClient() {
               {mockCertificates.map((cert) => (
                 <div 
                   key={cert.id} 
-                  onClick={() => setActiveCert(cert)}
-                  className="group/cert cursor-pointer glass-capsule bg-gradient-to-br from-accent-teal/5 via-transparent to-accent-coral/5 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.05)] rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-2 flex flex-col gap-4"
+                  onClick={() => {
+                    setSelectedCertIndex(cert.id);
+                    setCurrentPhotoIndex(0);
+                  }}
+                  className="group/cert cursor-pointer bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-2 flex flex-col gap-4"
                 >
-                  <div className="w-full aspect-[4/3] rounded-xl overflow-hidden relative bg-foreground/5 flex items-center justify-center">
-                    {cert.type === "image" ? (
-                      <Image 
-                        src={cert.url} 
-                        alt={cert.title} 
-                        fill 
-                        className="object-cover group-hover/cert:scale-105 transition-transform duration-500" 
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center justify-center text-foreground/40 group-hover/cert:text-accent-coral transition-colors duration-300">
-                        <FileText className="w-16 h-16 mb-2" />
-                        <span className="font-bold tracking-widest uppercase text-sm">PDF Document</span>
+                  <div className="w-full h-48 md:h-64 rounded-xl overflow-hidden relative border border-white/10 flex items-center justify-center bg-black/20">
+                    <Image 
+                      src={cert.images[0]} 
+                      alt={cert.title} 
+                      fill 
+                      className="object-cover group-hover/cert:scale-105 transition-transform duration-500" 
+                    />
+                    {cert.images.length > 1 && (
+                      <div className="absolute top-2 right-2 z-10 bg-black/20 backdrop-blur-md px-2 py-1 rounded-lg border border-white/10 text-[10px] text-white flex items-center gap-1 shadow-lg">
+                        <Images className="w-3 h-3" />
+                        <span>{cert.images.length}</span>
                       </div>
                     )}
                   </div>
@@ -343,16 +377,10 @@ export default function AboutClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className={`lg:col-span-12 ${bentoCardClass} flex flex-col items-center text-center`}
+            className={`lg:col-span-12 flex flex-col items-center text-center py-16 lg:py-24 mt-8`}
           >
-            {/* Embedded Background SVG purely for the connect card */}
-            <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none -z-10">
-              <svg className="w-full h-full text-accent-yellow/10" viewBox="0 0 1000 1000" preserveAspectRatio="none" fill="none">
-                <path d="M -100 800 C 200 1500, 300 -300, 500 300 C 700 900, 300 800, 700 600 C 1100 400, 600 -200, 1000 200 C 1400 600, 1000 1200, 1300 800 C 1600 400, 1400 0, 1640 500" stroke="currentColor" strokeWidth={50} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-              </svg>
-            </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("about.connect.title")}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">{t("about.connect.title")}</h2>
             <p className="text-foreground/70 mb-10 text-lg md:text-xl max-w-2xl mx-auto">
               {t("about.connect.desc")}
             </p>

@@ -114,7 +114,7 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
             {/* Minimalist Caption */}
             <div className="absolute -bottom-12 md:-bottom-16 left-0 right-0 text-center">
               <p className="text-lg md:text-xl font-light text-white tracking-wide">Project Screenshot</p>
-              <p className="text-sm font-medium text-white/50 mt-1 uppercase tracking-widest">
+              <p className="text-sm font-medium text-white/50 mt-1 capitalize tracking-wide">
                 {currentIndex + 1} of {images.length}
               </p>
             </div>
@@ -133,7 +133,7 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
             <div 
               key={idx} 
               onClick={() => openModal(idx)}
-              className="relative w-full overflow-hidden rounded-2xl glass-capsule shadow-lg group break-inside-avoid border border-white/5 dark:border-white/10 cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+              className="relative w-full overflow-hidden rounded-2xl bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] group break-inside-avoid cursor-pointer hover:scale-[1.02] transition-transform duration-300"
             >
               <Image
                 src={imgUrl}
