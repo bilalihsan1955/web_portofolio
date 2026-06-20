@@ -6,6 +6,22 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
+const formatCaption = (url: string) => {
+  try {
+    const filename = url.split('/').pop() || "";
+    // Remove all extensions (e.g., .png.webp -> just the base name)
+    const nameWithoutExt = filename.split('.')[0] || filename;
+    const decoded = decodeURIComponent(nameWithoutExt).replace(/[-_]/g, ' ');
+    
+    return decoded
+      .split(' ')
+      .map(word => word ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : '')
+      .join(' ');
+  } catch (e) {
+    return "Project Screenshot";
+  }
+};
+
 interface ProjectGalleryProps {
   images: string[];
 }
@@ -113,7 +129,7 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
             
             {/* Minimalist Caption */}
             <div className="absolute -bottom-12 md:-bottom-16 left-0 right-0 text-center">
-              <p className="text-lg md:text-xl font-light text-white tracking-wide">Project Screenshot</p>
+              <p className="text-lg md:text-xl font-light text-white tracking-wide capitalize">{formatCaption(images[currentIndex])}</p>
               <p className="text-sm font-medium text-white/50 mt-1 capitalize tracking-wide">
                 {currentIndex + 1} of {images.length}
               </p>
@@ -124,28 +140,50 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
     </AnimatePresence>
   );
 
+  const renderImageCard = (imgUrl: string, idx: number) => (
+    <div 
+      key={idx} 
+      onClick={() => openModal(idx)}
+      className="relative w-full overflow-hidden rounded-2xl bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+    >
+      <Image
+        src={imgUrl}
+        alt={`Project screenshot ${idx + 1}`}
+        width={800}
+        height={600}
+        className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      {/* Subtle overlay on hover */}
+      <div className="absolute inset-0 bg-accent-teal/0 group-hover:bg-accent-teal/20 transition-colors duration-300 pointer-events-none" />
+      
+      {/* Hover Caption matching modal */}
+      <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pointer-events-none">
+        <p className="text-lg font-light text-white tracking-wide translate-y-4 group-hover:translate-y-0 transition-transform duration-300 capitalize line-clamp-2">{formatCaption(imgUrl)}</p>
+        <p className="text-sm font-medium text-white/70 mt-1 capitalize tracking-wide translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+          {idx + 1} of {images.length}
+        </p>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <div className="mt-16 border-t border-foreground/10 pt-16">
         <h3 className="text-2xl font-bold text-foreground mb-8">Project Gallery</h3>
-        <div className="columns-1 sm:columns-2 gap-4 space-y-4">
-          {images.map((imgUrl, idx) => (
-            <div 
-              key={idx} 
-              onClick={() => openModal(idx)}
-              className="relative w-full overflow-hidden rounded-2xl bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] group break-inside-avoid cursor-pointer hover:scale-[1.02] transition-transform duration-300"
-            >
-              <Image
-                src={imgUrl}
-                alt={`Project screenshot ${idx + 1}`}
-                width={800}
-                height={600}
-                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              {/* Subtle overlay on hover */}
-              <div className="absolute inset-0 bg-accent-teal/0 group-hover:bg-accent-teal/20 transition-colors duration-300 pointer-events-none" />
-            </div>
-          ))}
+        
+        {/* Mobile: Single Column */}
+        <div className="flex sm:hidden flex-col gap-4">
+          {images.map((imgUrl, idx) => renderImageCard(imgUrl, idx))}
+        </div>
+
+        {/* Desktop: Two Columns Masonry (Left-to-Right Order) */}
+        <div className="hidden sm:flex flex-row gap-4 items-start">
+          <div className="flex flex-col gap-4 flex-1">
+            {images.map((imgUrl, idx) => ({ imgUrl, idx })).filter((_, i) => i % 2 === 0).map(({ imgUrl, idx }) => renderImageCard(imgUrl, idx))}
+          </div>
+          <div className="flex flex-col gap-4 flex-1">
+            {images.map((imgUrl, idx) => ({ imgUrl, idx })).filter((_, i) => i % 2 === 1).map(({ imgUrl, idx }) => renderImageCard(imgUrl, idx))}
+          </div>
         </div>
       </div>
 

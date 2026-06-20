@@ -36,10 +36,17 @@ export const projects: ProjectData[] = [
     },
     liveDemoLink: "https://play.google.com/store/apps/details?id=id.smartkampung.app",
     imageAssets: [
-      "https://picsum.photos/seed/smartkampung1/800/600",
-      "https://picsum.photos/seed/smartkampung2/800/600",
-      "https://picsum.photos/seed/smartkampung3/800/600",
-      "https://picsum.photos/seed/smartkampung4/800/600"
+      "/images/porto/Smart Kampung/banner_smartkampung.png",
+      "/images/porto/Smart Kampung/smart kampung onboarding screen.png.webp",
+      "/images/porto/Smart Kampung/smart kampung login screen.webp",
+      "/images/porto/Smart Kampung/smart kampung home screen.webp",
+      "/images/porto/Smart Kampung/smart kampung layanan screen.png.png",
+      "/images/porto/Smart Kampung/smart kampung pembayaran pbb screen.webp",
+      "/images/porto/Smart Kampung/smart kampung sipundiwangi screen.webp",
+      "/images/porto/Smart Kampung/smart kampung live cctv screen.webp",
+      "/images/porto/Smart Kampung/smart kampung profile screen.png.png",
+      "/images/porto/Smart Kampung/progres pengerjaan aplikasi.jpg",
+      "/images/porto/Smart Kampung/zoom meeting dengan kominfo banyuwangi.jpg"
     ]
   },
   {
