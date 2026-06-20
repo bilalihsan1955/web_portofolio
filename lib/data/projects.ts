@@ -9,6 +9,10 @@ export interface ProjectData {
     EN: string;
     ID: string;
   };
+  timeline: {
+    EN: string;
+    ID: string;
+  };
   fullDescription: {
     EN: string;
     ID: string;
@@ -26,13 +30,17 @@ export const projects: ProjectData[] = [
     category: "Mobile",
     role: "Mobile Developer (UI & API Integration)",
     techStack: ["Flutter", "REST API"],
+    timeline: {
+      EN: "August 2025 - February 2026",
+      ID: "Agustus 2025 - Februari 2026"
+    },
     shortSummary: {
       EN: "A public service Super App for Banyuwangi Regency, enabling citizens to process population administration, village certificates, and local taxes directly from their mobile devices.",
       ID: "Super App pelayanan publik Kabupaten Banyuwangi untuk memudahkan warga mengurus administrasi kependudukan, surat desa, dan pajak daerah langsung dari perangkat mobile."
     },
     fullDescription: {
-      EN: "Smartkampung is an official government application developed to digitalize public services across villages in Banyuwangi. My role was strictly focused on the mobile frontend development, which involved building cross-platform user interfaces with Flutter, integrating the existing REST APIs provided by the government, and monitoring application stability to cut physical queues.",
-      ID: "Smartkampung adalah aplikasi resmi pemerintah yang dikembangkan untuk mendigitalisasi pelayanan publik hingga ke tingkat desa di Kabupaten Banyuwangi. Peran saya sepenuhnya berfokus pada pengembangan frontend mobile, yang meliputi pembuatan antarmuka lintas platform menggunakan Flutter, integrasi dengan REST API yang sudah disediakan oleh pihak pemerintah, serta pemantauan stabilitas aplikasi untuk memangkas antrean fisik."
+      EN: "Smartkampung is an official government application developed to digitalize public services across villages in Banyuwangi. I was invited by Jagoan Indonesia to join this project, where my role was strictly focused on the mobile frontend development. This involved building cross-platform user interfaces with Flutter, integrating the existing REST APIs provided by the government, and monitoring application stability to cut physical queues.",
+      ID: "Smartkampung adalah aplikasi resmi pemerintah yang dikembangkan untuk mendigitalisasi pelayanan publik hingga ke tingkat desa di Kabupaten Banyuwangi. Saya diajak oleh tim Jagoan Indonesia untuk ikut andil dalam proyek ini, di mana peran saya difokuskan pada pengembangan frontend mobile. Pekerjaan ini meliputi pembuatan antarmuka lintas platform menggunakan Flutter, integrasi dengan REST API dari pemerintah, serta pemantauan stabilitas aplikasi untuk memangkas antrean fisik."
     },
     liveDemoLink: "https://play.google.com/store/apps/details?id=id.smartkampung.app",
     imageAssets: [
@@ -51,11 +59,51 @@ export const projects: ProjectData[] = [
   },
   {
     id: 2,
+    slug: "mustaka",
+    title: "Mustaka",
+    category: "Web",
+    role: "Full-Stack Web & Creative Developer",
+    techStack: ["Next.js 16", "TypeScript", "React Three Fiber", "TensorFlow.js", "Tailwind CSS v4", "Supabase"],
+    timeline: {
+      EN: "November 2025 - December 2025",
+      ID: "November 2025 - Desember 2025"
+    },
+    shortSummary: {
+      EN: "An interactive educational platform that virtually transports users into the Singhasari Kingdom, featuring in-browser AI Motion Capture.",
+      ID: "Platform edukasi interaktif yang membawa pengguna masuk ke dalam Kerajaan Singhasari secara virtual dengan fitur AI Motion Capture langsung di browser."
+    },
+    fullDescription: {
+      EN: "Mustaka is an interactive educational platform that virtually transports users into the Singhasari Kingdom. For this project, I was recruited to collaborate with the team from the Center of Cultural Frontier Studies Universitas Brawijaya (CCFS UB). Built with Next.js 16 architecture, the application utilizes TensorFlow.js to deliver in-browser Motion Capture features, detecting user poses in real-time to match movements with 3D characters of Ken Arok & Ken Dedes (rendered using React Three Fiber). Backed by a solid backend with Supabase, Mustaka demonstrates a complex integration between WebGL, client-side Machine Learning, and modern architectural systems. Additionally, during its development, I was extensively assisted by AI technologies to optimize and accelerate the coding process.",
+      ID: "Mustaka adalah platform edukasi interaktif yang membawa pengguna masuk ke dalam Kerajaan Singhasari secara virtual. Dalam proyek ini, saya direkrut untuk bekerja sama dengan tim dari Center of Cultural Frontier Studies Universitas Brawijaya (CCFS UB). Dibangun dengan arsitektur Next.js 16, aplikasi ini menggunakan TensorFlow.js untuk menghadirkan fitur Motion Capture langsung di browser, mendeteksi pose pengguna secara real-time untuk mencocokkan gerakan dengan karakter 3D Ken Arok & Ken Dedes (dirender menggunakan React Three Fiber). Didukung oleh backend yang solid dengan Supabase, Mustaka mendemonstrasikan integrasi kompleks antara WebGL, Machine Learning sisi klien, dan sistem arsitektur modern. Selain itu, dalam proses pengerjaannya, saya juga sangat dibantu oleh teknologi AI untuk mengoptimalkan dan mempercepat penulisan kode."
+    },
+    liveDemoLink: "https://mustaka.co.id/",
+    imageAssets: [
+      "/images/porto/Mustaka/Banner.png",
+      "/images/porto/Mustaka/Apa Itu Mustaka.png",
+      "/images/porto/Mustaka/Beranda.png",
+      "/images/porto/Mustaka/Kuratorial Jelajahi Singhasari 1.png",
+      "/images/porto/Mustaka/Kuratorial Singhasari 2.png",
+      "/images/porto/Mustaka/Motion Capture Ken Arok.png",
+      "/images/porto/Mustaka/Pilih Carakter.png",
+      "/images/porto/Mustaka/Section Kuratorial dan motion capture.png",
+      "/images/porto/Mustaka/Section Partnership.png",
+      "/images/porto/Mustaka/Video Pengujian Motion Capture.mp4",
+      "/images/porto/Mustaka/dokumentasi proses pengerjaan.jpg",
+      "/images/porto/Mustaka/dokumentasi proses pengerjaan serta diskusi dengan 3d artist.jpg",
+      "/images/porto/Mustaka/dokumentasi tim CCFS UB.jpg"
+    ]
+  },
+  {
+    id: 3,
     slug: "automatic-rainfall-recorder",
     title: "Automatic Rainfall Recorder",
     category: "IoT",
     role: "Embedded Systems Engineer",
     techStack: ["IoT", "ESP32-S3", "C++", "Modbus", "Next.js"],
+    timeline: {
+      EN: "January 2024 - March 2024",
+      ID: "Januari 2024 - Maret 2024"
+    },
     shortSummary: {
       EN: "An advanced IoT monitoring system utilizing ESP32-S3 microcontrollers and Modbus protocols.",
       ID: "Sistem pemantauan IoT canggih yang memanfaatkan mikrokontroler ESP32-S3 dan protokol Modbus."
@@ -72,12 +120,16 @@ export const projects: ProjectData[] = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     slug: "tracking-tractor-gateway",
     title: "Tracking Tractor Gateway",
     category: "IoT",
     role: "Hardware & Firmware Developer",
     techStack: ["ESP32-S3", "RS485", "C++", "GPS", "MQTT"],
+    timeline: {
+      EN: "January 2024 - March 2024",
+      ID: "Januari 2024 - Maret 2024"
+    },
     shortSummary: {
       EN: "An IoT gateway featuring ESP32-S3 and RS485 for precise tractor telemetry and tracking.",
       ID: "Gateway IoT yang menampilkan ESP32-S3 dan RS485 untuk telemetri dan pelacakan traktor yang presisi."
@@ -94,12 +146,16 @@ export const projects: ProjectData[] = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     slug: "digi-tree",
     title: "Digi Tree",
     category: "IoT",
     role: "Full-Stack IoT Developer",
     techStack: ["Arduino", "Node.js", "React", "Sensors", "WebSockets"],
+    timeline: {
+      EN: "January 2024 - March 2024",
+      ID: "Januari 2024 - Maret 2024"
+    },
     shortSummary: {
       EN: "An interactive IoT implementation for education, visualizing environmental data through a digital tree.",
       ID: "Implementasi IoT interaktif untuk pendidikan, memvisualisasikan data lingkungan melalui pohon digital."
@@ -116,12 +172,16 @@ export const projects: ProjectData[] = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     slug: "acacia-science",
     title: "Acacia Science",
     category: "UI/UX",
     role: "UI/UX Designer",
     techStack: ["Figma", "Prototyping", "Design Systems", "User Research"],
+    timeline: {
+      EN: "January 2024 - March 2024",
+      ID: "Januari 2024 - Maret 2024"
+    },
     shortSummary: {
       EN: "A premium glassmorphism UI/UX design for a scientific research and publication platform.",
       ID: "Desain UI/UX glassmorphism premium untuk platform penelitian dan publikasi ilmiah."
@@ -135,26 +195,6 @@ export const projects: ProjectData[] = [
       "https://picsum.photos/seed/smartkampung2/800/600",
       "https://picsum.photos/seed/smartkampung3/800/600",
       "https://picsum.photos/seed/smartkampung4/800/600"
-    ]
-  },
-  {
-    id: 6,
-    slug: "mustaka",
-    title: "Mustaka",
-    category: "Web",
-    role: "Web Developer",
-    techStack: ["Next.js", "Tailwind CSS", "Three.js"],
-    shortSummary: {
-      EN: "An interactive and immersive web application designed to introduce the legendary history of Ken Arok & Ken Dedes through modern UI/UX and rich animations.",
-      ID: "Platform web interaktif yang memperkenalkan kisah sejarah legendaris Ken Arok & Ken Dedes dengan pendekatan UI/UX yang imersif dan modern."
-    },
-    fullDescription: {
-      EN: "Mustaka is an interactive web experience designed to introduce the historical and legendary figures of Ken Arok and Ken Dedes using modern, immersive web elements. Built with Next.js, Tailwind CSS, and Three.js, it delivers a deeply engaging journey through Indonesian history, bridging the gap between cultural heritage and cutting-edge web technology.",
-      ID: "Mustaka adalah pengalaman web interaktif yang dirancang untuk memperkenalkan tokoh sejarah dan legendaris Ken Arok dan Ken Dedes menggunakan elemen web modern dan imersif. Dibangun dengan Next.js, Tailwind CSS, dan Three.js, platform ini menghadirkan perjalanan yang mendalam melalui sejarah Indonesia, menjembatani warisan budaya dengan teknologi web mutakhir."
-    },
-    liveDemoLink: "https://mustaka.co.id/",
-    imageAssets: [
-      "https://picsum.photos/seed/mustaka/800/600"
     ]
   }
 ];

@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ProjectData } from "@/lib/data/projects";
@@ -35,12 +35,18 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </p>
         </div>
         
-        <div className="flex flex-wrap gap-2 mt-8">
-          {project.techStack.map((tag) => (
-            <span key={tag} className="px-4 py-1.5 rounded-full text-sm font-medium bg-foreground/5 border border-foreground/10 text-foreground/80 shadow-sm">
-              {tag}
-            </span>
-          ))}
+        <div className="mt-8 flex flex-col gap-4">
+          <div className="flex items-center gap-2 text-foreground/50 text-sm font-medium">
+            <Calendar className="w-4 h-4" />
+            <span>{project.timeline[language as "EN" | "ID"]}</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {project.techStack.map((tag) => (
+              <span key={tag} className="px-4 py-1.5 rounded-full text-sm font-medium bg-foreground/5 border border-foreground/10 text-foreground/80 shadow-sm">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </motion.div>
     </Link>
