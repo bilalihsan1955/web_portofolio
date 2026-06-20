@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, Calendar } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
@@ -181,12 +181,18 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mt-8">
-                    {project.techStack.map((tag) => (
-                      <span key={tag} className="px-4 py-1.5 rounded-full text-sm font-medium bg-foreground/5 border border-transparent text-foreground/80">
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="mt-8 flex flex-col gap-4">
+                    <div className="flex items-center gap-2 text-foreground/50 text-sm font-medium">
+                      <Calendar className="w-4 h-4" />
+                      <span>{project.timeline[language as "EN" | "ID"]}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tag) => (
+                        <span key={tag} className="px-4 py-1.5 rounded-full text-sm font-medium bg-foreground/5 border border-transparent text-foreground/80">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               </Link>

@@ -2,7 +2,7 @@
 
 import { useParams, usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Calendar } from "lucide-react";
 import { projects } from "@/lib/data/projects";
 import { useLanguage } from "@/app/providers";
 import { ViewTransition } from "react";
@@ -93,6 +93,15 @@ export default function ProjectDetail() {
                       {tech}
                     </span>
                   ))}
+                </div>
+              </div>
+
+              {/* Timeline */}
+              <div>
+                <h3 className="text-sm font-medium text-foreground/50 capitalize tracking-wide mb-3">Timeline</h3>
+                <div className="flex items-center gap-2 text-foreground font-medium">
+                  <Calendar className="w-5 h-5 text-foreground/50" />
+                  <span>{project.timeline[language as "EN" | "ID"]}</span>
                 </div>
               </div>
 

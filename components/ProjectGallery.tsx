@@ -13,9 +13,25 @@ const formatCaption = (url: string) => {
     const nameWithoutExt = filename.split('.')[0] || filename;
     const decoded = decodeURIComponent(nameWithoutExt).replace(/[-_]/g, ' ');
     
+    const lowercaseWords = new Set(["dan", "dengan", "serta", "di", "ke", "dari", "yang", "untuk", "pada", "dalam", "atau"]);
+    const uppercaseWords = new Set(["ccfs", "ub", "cctv", "pbb", "api", "ui", "ux", "ai", "3d", "iot", "it", "web"]);
+
     return decoded
       .split(' ')
-      .map(word => word ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : '')
+      .map((word, index) => {
+        if (!word) return '';
+        const lowerWord = word.toLowerCase();
+        
+        if (uppercaseWords.has(lowerWord)) {
+          return word.toUpperCase();
+        }
+        
+        if (lowercaseWords.has(lowerWord) && index !== 0) {
+          return lowerWord;
+        }
+        
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
       .join(' ');
   } catch (e) {
     return "Project Screenshot";
@@ -116,14 +132,24 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="w-full h-full relative"
               >
-                <Image 
-                  alt={`Gallery image ${currentIndex + 1}`} 
-                  className="object-contain drop-shadow-2xl" 
-                  fill 
-                  sizes="90vw" 
-                  src={images[currentIndex]}
-                  priority
-                />
+                {images[currentIndex].toLowerCase().endsWith('.mp4') ? (
+                  <video 
+                    src={images[currentIndex]}
+                    controls
+                    autoPlay
+                    playsInline
+                    className="w-full h-full object-contain drop-shadow-2xl outline-none"
+                  />
+                ) : (
+                  <Image 
+                    alt={`Gallery image ${currentIndex + 1}`} 
+                    className="object-contain drop-shadow-2xl" 
+                    fill 
+                    sizes="90vw" 
+                    src={images[currentIndex]}
+                    priority
+                  />
+                )}
               </motion.div>
             </AnimatePresence>
             
@@ -146,13 +172,24 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
       onClick={() => openModal(idx)}
       className="relative w-full overflow-hidden rounded-2xl bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer hover:scale-[1.02] transition-transform duration-300"
     >
-      <Image
-        src={imgUrl}
-        alt={`Project screenshot ${idx + 1}`}
-        width={800}
-        height={600}
-        className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-      />
+      {imgUrl.toLowerCase().endsWith('.mp4') ? (
+        <video
+          src={imgUrl}
+          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      ) : (
+        <Image
+          src={imgUrl}
+          alt={`Project screenshot ${idx + 1}`}
+          width={800}
+          height={600}
+          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      )}
       {/* Subtle overlay on hover */}
       <div className="absolute inset-0 bg-accent-teal/0 group-hover:bg-accent-teal/20 transition-colors duration-300 pointer-events-none" />
       
