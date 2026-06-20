@@ -8,7 +8,28 @@ import { useLanguage } from "@/app/providers";
 import { ViewTransition } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ProjectGallery from "@/components/ProjectGallery";
+import dynamic from "next/dynamic";
+
+const ProjectGallerySkeleton = () => (
+  <div className="mt-16 border-t border-foreground/10 pt-16 w-full animate-pulse">
+    <div className="h-8 w-48 bg-foreground/5 rounded-md mb-8"></div>
+    <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex-1 flex flex-col gap-4">
+        <div className="w-full h-64 bg-foreground/5 rounded-2xl"></div>
+        <div className="w-full h-80 bg-foreground/5 rounded-2xl"></div>
+      </div>
+      <div className="flex-1 hidden sm:flex flex-col gap-4">
+        <div className="w-full h-80 bg-foreground/5 rounded-2xl"></div>
+        <div className="w-full h-64 bg-foreground/5 rounded-2xl"></div>
+      </div>
+    </div>
+  </div>
+);
+
+const ProjectGallery = dynamic(() => import("@/components/ProjectGallery"), { 
+  ssr: false,
+  loading: () => <ProjectGallerySkeleton />
+});
 
 export default function ProjectDetail() {
   const params = useParams();
@@ -29,7 +50,11 @@ export default function ProjectDetail() {
   return (
     <ViewTransition enter="fade-in" exit="fade-out" default="none">
       {/* Massive Poster Background - Project Detail */}
-      <div className="fixed top-0 left-0 w-screen h-screen -z-[100] pointer-events-none overflow-hidden opacity-10">
+      <motion.div 
+        className="fixed top-0 left-0 w-screen h-screen -z-[100] pointer-events-none overflow-hidden opacity-10"
+        animate={{ y: [0, -30, 0] }}
+        transition={{ duration: 15, ease: "easeInOut", repeat: Infinity }}
+      >
         <motion.svg
           key={pathname}
           className="w-full h-full text-accent-teal"
@@ -48,15 +73,12 @@ export default function ProjectDetail() {
             stroke="currentColor"
             strokeWidth={80}
             strokeLinecap="round"
-            initial={{ pathLength: 0, y: 0 }}
-            animate={{ pathLength: 1, y: [0, -30, 0] }}
-            transition={{
-              pathLength: { duration: 5, ease: "easeInOut" },
-              y: { duration: 15, ease: "easeInOut", repeat: Infinity }
-            }}
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 5, ease: "easeInOut" }}
           />
         </motion.svg>
-      </div>
+      </motion.div>
 
       <div className="min-h-screen w-full relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 
