@@ -8,28 +8,7 @@ import { useLanguage } from "@/app/providers";
 import { ViewTransition } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-
-const ProjectGallerySkeleton = () => (
-  <div className="mt-16 border-t border-foreground/10 pt-16 w-full animate-pulse">
-    <div className="h-8 w-48 bg-foreground/5 rounded-md mb-8"></div>
-    <div className="flex flex-col sm:flex-row gap-4">
-      <div className="flex-1 flex flex-col gap-4">
-        <div className="w-full h-64 bg-foreground/5 rounded-2xl"></div>
-        <div className="w-full h-80 bg-foreground/5 rounded-2xl"></div>
-      </div>
-      <div className="flex-1 hidden sm:flex flex-col gap-4">
-        <div className="w-full h-80 bg-foreground/5 rounded-2xl"></div>
-        <div className="w-full h-64 bg-foreground/5 rounded-2xl"></div>
-      </div>
-    </div>
-  </div>
-);
-
-const ProjectGallery = dynamic(() => import("@/components/ProjectGallery"), { 
-  ssr: false,
-  loading: () => <ProjectGallerySkeleton />
-});
+import ProjectGallery from "@/components/ProjectGallery";
 
 export default function ProjectDetail() {
   const params = useParams();

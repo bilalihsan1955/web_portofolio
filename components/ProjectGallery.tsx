@@ -46,6 +46,11 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [loadedMedia, setLoadedMedia] = useState<Record<number, boolean>>({});
+
+  const handleMediaLoad = (idx: number) => {
+    setLoadedMedia(prev => ({ ...prev, [idx]: true }));
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -166,30 +171,34 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
     </AnimatePresence>
   );
 
-  const renderImageCard = (imgUrl: string, idx: number) => (
-    <div 
-      key={idx} 
-      onClick={() => openModal(idx)}
-      className="relative w-full overflow-hidden rounded-2xl bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer hover:scale-[1.02] transition-transform duration-300"
-    >
-      {imgUrl.toLowerCase().endsWith('.mp4') ? (
-        <video
-          src={imgUrl}
-          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-      ) : (
-        <Image
-          src={imgUrl}
-          alt={`Project screenshot ${idx + 1}`}
-          width={800}
-          height={600}
-          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      )}
+  const renderImageCard = (imgUrl: string, idx: number) => {
+    const isLoaded = loadedMedia[idx];
+    return (
+      <div 
+        key={idx} 
+        onClick={() => openModal(idx)}
+        className={`relative w-full overflow-hidden rounded-2xl bg-foreground/5 backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer hover:scale-[1.02] transition-transform duration-300 ${!isLoaded ? 'animate-pulse min-h-[300px]' : ''}`}
+      >
+        {imgUrl.toLowerCase().endsWith('.mp4') ? (
+          <video
+            src={imgUrl}
+            onLoadedData={() => handleMediaLoad(idx)}
+            className={`w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <Image
+            src={imgUrl}
+            alt={`Project screenshot ${idx + 1}`}
+            width={800}
+            height={600}
+            onLoad={() => handleMediaLoad(idx)}
+            className={`w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          />
+        )}
       {/* Subtle overlay on hover */}
       <div className="absolute inset-0 bg-accent-teal/0 group-hover:bg-accent-teal/20 transition-colors duration-300 pointer-events-none" />
       
@@ -200,8 +209,9 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
           {idx + 1} of {images.length}
         </p>
       </div>
-    </div>
-  );
+      </div>
+    );
+  };
 
   return (
     <>
