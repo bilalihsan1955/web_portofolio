@@ -9,11 +9,20 @@ export function LanguageToggleUI() {
   return (
     <button
       onClick={() => setLanguage(language === "EN" ? "ID" : "EN")}
-      className="flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/5 backdrop-blur-2xl border border-foreground/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:scale-105 hover:bg-foreground/10 transition-all duration-300 cursor-pointer"
+      className="relative flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)] border-[1.5px] border-white/40 dark:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden group"
       aria-label={`Switch to ${language === "EN" ? "Indonesian" : "English"}`}
     >
-      <Globe className="w-5 h-5 text-accent-teal" />
-      <span className="text-sm font-bold text-foreground tracking-wide">
+      {/* Natural Corner Highlights (Masked Border & Inner Glow) */}
+      <div 
+        className="absolute inset-0 pointer-events-none rounded-full border-[2px] border-white/90 dark:border-white/60 mix-blend-overlay shadow-[inset_0_0_24px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_24px_rgba(255,255,255,0.2)] transition-opacity duration-300 opacity-80 group-hover:opacity-100"
+        style={{
+          WebkitMaskImage: 'radial-gradient(ellipse 40px 20px at 10% 0%, black 0%, transparent 100%), radial-gradient(ellipse 40px 20px at 90% 0%, black 0%, transparent 100%), radial-gradient(ellipse 60px 20px at 50% 100%, black 0%, transparent 100%)',
+          maskImage: 'radial-gradient(ellipse 40px 20px at 10% 0%, black 0%, transparent 100%), radial-gradient(ellipse 40px 20px at 90% 0%, black 0%, transparent 100%), radial-gradient(ellipse 60px 20px at 50% 100%, black 0%, transparent 100%)'
+        }}
+      ></div>
+
+      <Globe className="w-5 h-5 text-accent-teal relative z-10" />
+      <span className="text-sm font-bold text-foreground tracking-wide relative z-10">
         {language}
       </span>
     </button>
