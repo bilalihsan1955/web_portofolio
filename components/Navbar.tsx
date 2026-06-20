@@ -31,11 +31,11 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed top-6 inset-x-0 z-50 px-4 md:px-6 lg:px-8 w-full">
-        <nav className="relative w-full max-w-7xl mx-auto rounded-full bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[inset_0_0_12px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.08),_0_10px_30px_rgba(0,0,0,0.4)] border-[1.5px] border-white/40 dark:border-white/20 transition-all duration-300">
+        <nav className="relative w-full max-w-7xl mx-auto rounded-full bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[inset_0_0_12px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.08),_0_10px_30px_rgba(0,0,0,0.4)] border border-white/20 md:border-[1.5px] md:border-white/40 dark:border-white/10 md:dark:border-white/20 transition-all duration-300">
           
           {/* Natural Corner Highlights (Masked Border & Inner Glow) */}
           <div 
-            className="absolute inset-0 pointer-events-none rounded-full border-[2px] border-white/90 dark:border-white/60 mix-blend-overlay shadow-[inset_0_0_24px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_24px_rgba(255,255,255,0.2)]"
+            className="absolute -inset-[1px] md:-inset-[1.5px] pointer-events-none rounded-full border border-white/60 md:border-[2px] md:border-white/90 dark:border-white/30 md:dark:border-white/60 mix-blend-overlay shadow-[inset_0_0_12px_rgba(255,255,255,0.3)] md:shadow-[inset_0_0_24px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.1)] md:dark:shadow-[inset_0_0_24px_rgba(255,255,255,0.2)]"
             style={{
               WebkitMaskImage: 'radial-gradient(ellipse 260px 50px at 5% 0%, black 0%, transparent 100%), radial-gradient(ellipse 180px 50px at 95% 0%, black 0%, transparent 100%), radial-gradient(ellipse 320px 40px at 45% 100%, black 0%, transparent 100%)',
               maskImage: 'radial-gradient(ellipse 260px 50px at 5% 0%, black 0%, transparent 100%), radial-gradient(ellipse 180px 50px at 95% 0%, black 0%, transparent 100%), radial-gradient(ellipse 320px 40px at 45% 100%, black 0%, transparent 100%)'
@@ -108,11 +108,11 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="md:hidden fixed top-24 left-1/2 -translate-x-1/2 w-11/12 max-w-sm bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[inset_0_0_12px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.08),_0_10px_30px_rgba(0,0,0,0.4)] border-[1.5px] border-white/40 dark:border-white/20 rounded-3xl p-4 z-40 overflow-hidden"
+            className="md:hidden fixed top-24 left-1/2 -translate-x-1/2 w-11/12 max-w-sm bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[inset_0_0_12px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.08),_0_10px_30px_rgba(0,0,0,0.4)] border border-white/20 dark:border-white/10 rounded-3xl p-4 z-40 overflow-hidden"
           >
             {/* Natural Corner Highlights (Masked Border & Inner Glow) */}
             <div 
-              className="absolute inset-0 pointer-events-none rounded-3xl border-[2px] border-white/90 dark:border-white/60 mix-blend-overlay shadow-[inset_0_0_24px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_24px_rgba(255,255,255,0.2)]"
+              className="absolute -inset-[1px] pointer-events-none rounded-3xl border border-white/60 dark:border-white/30 mix-blend-overlay shadow-[inset_0_0_12px_rgba(255,255,255,0.3)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.1)]"
               style={{
                 WebkitMaskImage: 'radial-gradient(ellipse 160px 40px at 0% 0%, black 0%, transparent 100%), radial-gradient(ellipse 120px 40px at 100% 0%, black 0%, transparent 100%), radial-gradient(ellipse 240px 40px at 45% 100%, black 0%, transparent 100%)',
                 maskImage: 'radial-gradient(ellipse 160px 40px at 0% 0%, black 0%, transparent 100%), radial-gradient(ellipse 120px 40px at 100% 0%, black 0%, transparent 100%), radial-gradient(ellipse 240px 40px at 45% 100%, black 0%, transparent 100%)'
