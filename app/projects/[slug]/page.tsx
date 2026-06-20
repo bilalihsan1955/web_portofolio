@@ -144,6 +144,7 @@ export default function ProjectDetail() {
                     src={project.imageAssets[0]}
                     alt={`${project.title} Hero Image`}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 66vw"
                     className="object-cover"
                     priority
                   />

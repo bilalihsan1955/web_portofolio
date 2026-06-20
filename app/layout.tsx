@@ -10,6 +10,7 @@ import GlobalLoader from "@/components/GlobalLoader";
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
