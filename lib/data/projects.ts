@@ -89,7 +89,7 @@ export const projects: ProjectData[] = [
       "/images/porto/Mustaka/Section Partnership.png",
       "/images/porto/Mustaka/Video Pengujian Motion Capture.mp4",
       "/images/porto/Mustaka/dokumentasi proses pengerjaan.jpg",
-      "/images/porto/Mustaka/dokumentasi proses pengerjaan serta diskusi dengan 3d artist.jpg",
+      "/images/porto/Mustaka/dokumentasi proses pengerjaan serta diskusi dengan 3D artist.jpg",
       "/images/porto/Mustaka/dokumentasi tim CCFS UB.jpg"
     ]
   },
