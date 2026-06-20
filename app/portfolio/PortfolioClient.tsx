@@ -58,14 +58,16 @@ export default function Portfolio() {
           </p>
 
           {/* Category Filters (Segmented Control) */}
-          <div className="inline-flex flex-wrap items-center justify-center p-1.5 gap-1 bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full mt-10">
+          <div className="inline-flex flex-wrap items-center justify-center p-1.5 gap-1 bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[inset_0_0_8px_rgba(255,255,255,0.1),_0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_8px_rgba(255,255,255,0.05),_0_10px_30px_rgba(0,0,0,0.4)] border border-white/20 dark:border-white/10 rounded-full mt-10 relative overflow-hidden">
+            {/* Natural Corner Highlights */}
+            <div className="absolute inset-0 pointer-events-none rounded-full border border-white/60 dark:border-white/40 mix-blend-overlay shadow-[inset_0_0_12px_rgba(255,255,255,0.3)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.1)] z-0" style={{ WebkitMaskImage: 'radial-gradient(ellipse 300px 40px at 50% 0%, black 0%, transparent 100%), radial-gradient(ellipse 150px 30px at 100% 100%, black 0%, transparent 100%)', maskImage: 'radial-gradient(ellipse 300px 40px at 50% 0%, black 0%, transparent 100%), radial-gradient(ellipse 150px 30px at 100% 100%, black 0%, transparent 100%)' }}></div>
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${activeCategory === category
-                  ? "bg-accent-teal/10 text-accent-teal"
-                  : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
+                className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${activeCategory === category
+                  ? "bg-accent-teal/10 text-accent-teal shadow-[inset_0_0_0_1px_rgba(20,184,166,0.2)]"
+                  : "text-foreground/70 hover:text-foreground hover:bg-white/5 dark:hover:bg-white/[0.05] hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_2px_rgba(255,255,255,0.2)] dark:hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_2px_rgba(255,255,255,0.1)]"
                   }`}
               >
                 {category}

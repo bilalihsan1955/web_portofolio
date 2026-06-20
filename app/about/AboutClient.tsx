@@ -233,14 +233,16 @@ export default function AboutClient() {
               
               {/* Photo Column */}
               <div className="flex-shrink-0 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[350px]">
-                <div className="w-full h-80 lg:h-[400px] relative bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] lg:rounded-[2.5rem] transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] cursor-pointer group overflow-hidden">
+                <div className="w-full h-80 lg:h-[400px] relative bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[inset_0_0_12px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.08),_0_10px_30px_rgba(0,0,0,0.4)] border-[1.5px] border-white/40 dark:border-white/20 rounded-[2rem] lg:rounded-[2.5rem] transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] cursor-pointer group overflow-hidden">
                   <Image 
                     src="/images/bilal.png"
                     alt="Bilal Ihsan"
                     fill
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-full relative z-0"
                     priority
                   />
+                  {/* Natural Corner Highlights */}
+                  <div className="absolute inset-0 pointer-events-none rounded-[2rem] lg:rounded-[2.5rem] border-[2px] border-white/90 dark:border-white/60 mix-blend-overlay shadow-[inset_0_0_24px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_24px_rgba(255,255,255,0.2)] z-10" style={{ WebkitMaskImage: 'radial-gradient(ellipse 200px 300px at 0% 0%, black 0%, transparent 100%), radial-gradient(ellipse 200px 300px at 0% 100%, black 0%, transparent 100%)', maskImage: 'radial-gradient(ellipse 200px 300px at 0% 0%, black 0%, transparent 100%), radial-gradient(ellipse 200px 300px at 0% 100%, black 0%, transparent 100%)' }}></div>
                 </div>
               </div>
 
@@ -343,9 +345,11 @@ export default function AboutClient() {
                     setSelectedCertIndex(cert.id);
                     setCurrentPhotoIndex(0);
                   }}
-                  className="group/cert cursor-pointer bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-2 flex flex-col gap-4"
+                  className="group/cert cursor-pointer relative bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[inset_0_0_12px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.08),_0_10px_30px_rgba(0,0,0,0.4)] border-[1.5px] border-white/40 dark:border-white/20 rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-2 flex flex-col gap-4 overflow-hidden"
                 >
-                  <div className="w-full h-48 md:h-64 rounded-xl overflow-hidden relative border border-white/10 flex items-center justify-center bg-black/20">
+                  {/* Natural Corner Highlights */}
+                  <div className="absolute inset-0 pointer-events-none rounded-3xl border-[2px] border-white/90 dark:border-white/60 mix-blend-overlay shadow-[inset_0_0_24px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_24px_rgba(255,255,255,0.2)] z-0" style={{ WebkitMaskImage: 'radial-gradient(ellipse 300px 150px at 20% 0%, black 0%, transparent 100%), radial-gradient(ellipse 150px 150px at 80% 100%, black 0%, transparent 100%)', maskImage: 'radial-gradient(ellipse 300px 150px at 20% 0%, black 0%, transparent 100%), radial-gradient(ellipse 150px 150px at 80% 100%, black 0%, transparent 100%)' }}></div>
+                  <div className="w-full h-48 md:h-64 rounded-xl overflow-hidden relative border border-white/10 flex items-center justify-center bg-black/20 z-10">
                     <Image 
                       src={cert.images[0]} 
                       alt={cert.title} 
@@ -359,7 +363,7 @@ export default function AboutClient() {
                       </div>
                     )}
                   </div>
-                  <div>
+                  <div className="relative z-10">
                     <h3 className="font-bold text-lg text-foreground line-clamp-1">{cert.title}</h3>
                     <div className="flex justify-between items-center mt-1">
                       <span className="text-sm text-foreground/60">{cert.issuer}</span>

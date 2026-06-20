@@ -137,7 +137,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/about"
-                className="flex items-center gap-2 px-8 py-4 bg-transparent border border-foreground/20 text-foreground rounded-full font-semibold hover:bg-foreground/5 transition-colors w-full sm:w-auto justify-center"
+                className="flex items-center gap-2 px-8 py-4 bg-transparent border border-foreground/20 text-foreground rounded-full font-semibold shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_2px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_2px_rgba(255,255,255,0.1)] hover:bg-white/5 dark:hover:bg-white/[0.05] transition-all duration-300 w-full sm:w-auto justify-center"
               >
                 {t("hero.btn.connect")}
               </Link>
@@ -166,29 +166,31 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group relative flex flex-col justify-between p-8 md:p-10 bg-white/[0.02] dark:bg-white/[0.02] backdrop-blur-2xl border border-black/[0.05] dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] hover:scale-[1.02] transition-transform duration-300 overflow-hidden min-h-[320px] h-full"
+                  className="group relative flex flex-col justify-between p-8 md:p-10 bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[inset_0_0_12px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.08),_0_10px_30px_rgba(0,0,0,0.4)] border-[1.5px] border-white/40 dark:border-white/20 rounded-[2rem] hover:scale-[1.02] transition-transform duration-300 overflow-hidden min-h-[320px] h-full"
                 >
-                  <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-300">
+                  {/* Natural Corner Highlights */}
+                  <div className="absolute inset-0 pointer-events-none rounded-[2rem] border-[2px] border-white/90 dark:border-white/60 mix-blend-overlay shadow-[inset_0_0_24px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_24px_rgba(255,255,255,0.2)] z-0" style={{ WebkitMaskImage: 'radial-gradient(ellipse 400px 150px at 50% 0%, black 0%, transparent 100%), radial-gradient(ellipse 150px 150px at 100% 100%, black 0%, transparent 100%)', maskImage: 'radial-gradient(ellipse 400px 150px at 50% 0%, black 0%, transparent 100%), radial-gradient(ellipse 150px 150px at 100% 100%, black 0%, transparent 100%)' }}></div>
+                  <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-300 z-10">
                     <div className="p-3 bg-foreground rounded-full text-background">
                       <ExternalLink className="w-5 h-5" />
                     </div>
                   </div>
 
-                  <div className="space-y-6">
+                  <div className="space-y-6 relative z-10">
                     <h3 className="text-2xl font-bold text-foreground pr-12">{project.title}</h3>
                     <p className="text-foreground/80 leading-relaxed text-lg">
                       {project.shortSummary[language as "EN" | "ID"]}
                     </p>
                   </div>
 
-                  <div className="mt-8 flex flex-col gap-4">
+                  <div className="mt-8 flex flex-col gap-4 relative z-10">
                     <div className="flex items-center gap-2 text-foreground/50 text-sm font-medium">
                       <Calendar className="w-4 h-4" />
                       <span>{project.timeline[language as "EN" | "ID"]}</span>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.map((tag) => (
-                        <span key={tag} className="px-4 py-1.5 rounded-full text-sm font-medium bg-foreground/5 border border-transparent text-foreground/80">
+                        <span key={tag} className="px-4 py-1.5 rounded-full text-sm font-medium bg-black/5 dark:bg-white/[0.05] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_2px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_2px_rgba(255,255,255,0.1)] text-foreground/80 border border-transparent backdrop-blur-md">
                           {tag}
                         </span>
                       ))}

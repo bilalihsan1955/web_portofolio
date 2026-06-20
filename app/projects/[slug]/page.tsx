@@ -90,7 +90,7 @@ export default function ProjectDetail() {
                 <h3 className="text-sm font-medium text-foreground/50 capitalize tracking-wide mb-3">Tech Stack</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.techStack.map(tech => (
-                    <span key={tech} className="px-4 py-1.5 rounded-full text-sm font-medium bg-foreground/5 border border-foreground/10 text-foreground/80 shadow-sm">
+                    <span key={tech} className="px-4 py-1.5 rounded-full text-sm font-medium bg-black/5 dark:bg-white/[0.05] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_2px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_2px_rgba(255,255,255,0.1)] text-foreground/80 border border-transparent backdrop-blur-md">
                       {tech}
                     </span>
                   ))}
