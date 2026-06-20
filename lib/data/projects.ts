@@ -40,11 +40,11 @@ export const projects: ProjectData[] = [
       "/images/porto/Smart Kampung/smart kampung onboarding screen.png.webp",
       "/images/porto/Smart Kampung/smart kampung login screen.webp",
       "/images/porto/Smart Kampung/smart kampung home screen.webp",
-      "/images/porto/Smart Kampung/smart kampung layanan screen.png.png",
+      "/images/porto/Smart Kampung/smart kampung layanan screen.webp",
       "/images/porto/Smart Kampung/smart kampung pembayaran pbb screen.webp",
       "/images/porto/Smart Kampung/smart kampung sipundiwangi screen.webp",
       "/images/porto/Smart Kampung/smart kampung live cctv screen.webp",
-      "/images/porto/Smart Kampung/smart kampung profile screen.png.png",
+      "/images/porto/Smart Kampung/smart kampung profile screen.webp",
       "/images/porto/Smart Kampung/progres pengerjaan aplikasi.jpg",
       "/images/porto/Smart Kampung/zoom meeting dengan kominfo banyuwangi.jpg"
     ]
