@@ -19,11 +19,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.3 }}
-        className="group relative flex flex-col justify-between p-8 bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[inset_0_0_12px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.08),_0_10px_30px_rgba(0,0,0,0.4)] border-[1.5px] border-white/40 dark:border-white/20 rounded-[2rem] hover:-translate-y-2 transition-transform duration-300 overflow-hidden min-h-[380px] h-full"
+        className="group relative flex flex-col justify-between p-8 bg-white/5 dark:bg-white/[0.03] backdrop-blur-[24px] saturate-[1.2] shadow-[inset_0_0_12px_rgba(255,255,255,0.2),_0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.08),_0_10px_30px_rgba(0,0,0,0.4)] border border-white/20 md:border-[1.5px] md:border-white/40 dark:border-white/10 md:dark:border-white/20 rounded-[2rem] hover:-translate-y-2 transition-transform duration-300 overflow-hidden min-h-[380px] h-full"
       >
         {/* Natural Corner Highlights (Masked Border & Inner Glow) */}
         <div 
-          className="absolute inset-0 pointer-events-none rounded-[2rem] border-[2px] border-white/90 dark:border-white/60 mix-blend-overlay shadow-[inset_0_0_24px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_24px_rgba(255,255,255,0.2)] z-0"
+          className="absolute -inset-[1px] md:-inset-[1.5px] pointer-events-none rounded-[2rem] border border-white/60 md:border-[2px] md:border-white/90 dark:border-white/30 md:dark:border-white/60 mix-blend-overlay shadow-[inset_0_0_12px_rgba(255,255,255,0.3)] md:shadow-[inset_0_0_24px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.1)] md:dark:shadow-[inset_0_0_24px_rgba(255,255,255,0.2)] z-0"
           style={{
             WebkitMaskImage: 'radial-gradient(ellipse 260px 200px at 100% 0%, black 0%, transparent 100%), radial-gradient(ellipse 260px 200px at 0% 100%, black 0%, transparent 100%)',
             maskImage: 'radial-gradient(ellipse 260px 200px at 100% 0%, black 0%, transparent 100%), radial-gradient(ellipse 260px 200px at 0% 100%, black 0%, transparent 100%)'
