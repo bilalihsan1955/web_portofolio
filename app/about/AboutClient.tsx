@@ -238,6 +238,7 @@ export default function AboutClient() {
                     src="/images/bilal.png"
                     alt="Bilal Ihsan"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 300px, 350px"
                     className="object-cover w-full h-full relative z-0"
                     priority
                   />
