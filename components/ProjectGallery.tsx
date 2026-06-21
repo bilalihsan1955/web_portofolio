@@ -205,9 +205,6 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
       {/* Hover Caption matching modal */}
       <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end pointer-events-none">
         <p className="text-lg font-light text-white tracking-wide translate-y-4 group-hover:translate-y-0 transition-transform duration-300 capitalize line-clamp-2">{formatCaption(imgUrl)}</p>
-        <p className="text-sm font-medium text-white/70 mt-1 capitalize tracking-wide translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-          {idx + 1} of {images.length}
-        </p>
       </div>
       </div>
     );
@@ -223,13 +220,26 @@ export default function ProjectGallery({ images }: ProjectGalleryProps) {
           {images.map((imgUrl, idx) => renderImageCard(imgUrl, idx))}
         </div>
 
-        {/* Desktop: Two Columns Masonry (Left-to-Right Order) */}
-        <div className="hidden sm:flex flex-row gap-4 items-start">
+        {/* Tablet: Two Columns Masonry (Left-to-Right Order) */}
+        <div className="hidden sm:flex lg:hidden flex-row gap-4 items-start">
           <div className="flex flex-col gap-4 flex-1">
             {images.map((imgUrl, idx) => ({ imgUrl, idx })).filter((_, i) => i % 2 === 0).map(({ imgUrl, idx }) => renderImageCard(imgUrl, idx))}
           </div>
           <div className="flex flex-col gap-4 flex-1">
             {images.map((imgUrl, idx) => ({ imgUrl, idx })).filter((_, i) => i % 2 === 1).map(({ imgUrl, idx }) => renderImageCard(imgUrl, idx))}
+          </div>
+        </div>
+
+        {/* Desktop: Three Columns Masonry */}
+        <div className="hidden lg:flex flex-row gap-4 items-start">
+          <div className="flex flex-col gap-4 flex-1">
+            {images.map((imgUrl, idx) => ({ imgUrl, idx })).filter((_, i) => i % 3 === 0).map(({ imgUrl, idx }) => renderImageCard(imgUrl, idx))}
+          </div>
+          <div className="flex flex-col gap-4 flex-1">
+            {images.map((imgUrl, idx) => ({ imgUrl, idx })).filter((_, i) => i % 3 === 1).map(({ imgUrl, idx }) => renderImageCard(imgUrl, idx))}
+          </div>
+          <div className="flex flex-col gap-4 flex-1">
+            {images.map((imgUrl, idx) => ({ imgUrl, idx })).filter((_, i) => i % 3 === 2).map(({ imgUrl, idx }) => renderImageCard(imgUrl, idx))}
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { ViewTransition } from "react";
 import { useLanguage } from "@/app/providers";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { FileText, X, Images, ChevronLeft, ChevronRight } from "lucide-react";
+import { FileText, X, Images, ChevronLeft, ChevronRight, Linkedin, Mail, Instagram, ArrowRight } from "lucide-react";
 
 const techStack = [
   { name: "MySQL", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
@@ -31,6 +31,36 @@ const toolsPlatforms = [
   { name: "Vercel", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg" },
   { name: "VS Code", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" },
   { name: "Postman", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" },
+];
+
+const contactMethods = [
+  {
+    icon: <Linkedin className="w-6 h-6" />,
+    title: "Connect on LinkedIn",
+    desc: "Let's build a professional network and explore opportunities.",
+    link: {
+      name: "Visit Profile",
+      href: "https://www.linkedin.com/in/bilalalihsan"
+    },
+  },
+  {
+    icon: <Mail className="w-6 h-6" />,
+    title: "Email Me",
+    desc: "Have a project in mind? Send me an email and let's talk.",
+    link: {
+      name: "contact@bilalalihsan.com",
+      href: "mailto:contact@bilalalihsan.com"
+    },
+  },
+  {
+    icon: <Instagram className="w-6 h-6" />,
+    title: "Follow on Instagram",
+    desc: "See my daily updates, design inspirations, and behind-the-scenes.",
+    link: {
+      name: "Follow @bilalalihsan",
+      href: "https://instagram.com/bilalalihsan"
+    },
+  },
 ];
 
 const timeline = [
@@ -268,7 +298,7 @@ export default function AboutClient() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className={`lg:col-span-8 flex flex-col justify-start items-start py-8`}
           >
-            <h2 className="text-2xl font-bold text-foreground mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
               {t("about.tech.title")}
             </h2>
             <div className="flex flex-col gap-10 w-full">
@@ -283,7 +313,7 @@ export default function AboutClient() {
                 }
               ].map((group) => (
                 <div key={group.title} className="flex flex-col items-start text-left w-full">
-                  <h3 className="text-sm font-semibold text-foreground/60 capitalize tracking-wide mb-6">{group.title}</h3>
+                  <h3 className="text-xs md:text-sm font-bold uppercase text-foreground/50 tracking-widest mb-6">{group.title}</h3>
                   <div className="flex flex-wrap gap-8 md:gap-10">
                     {group.items.map((tech) => (
                       <div key={tech.name} className="relative flex flex-col items-center group/icon cursor-pointer">
@@ -313,14 +343,14 @@ export default function AboutClient() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className={`lg:col-span-4 flex flex-col py-8`}
           >
-            <h2 className="text-2xl font-bold text-foreground mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
               {t("about.journey.title")}
             </h2>
             <div className="flex flex-col gap-12">
               {timeline.map((item, idx) => (
                 <div key={idx} className="flex flex-col">
                   <span className="text-sm font-bold text-accent-coral tracking-wide mb-2">{item.year}</span>
-                  <h3 className="text-xl font-bold text-foreground mb-2 tracking-tight">{item.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2 tracking-tight">{item.title}</h3>
                   <p className="text-foreground/60 text-base leading-relaxed">{item.description}</p>
                 </div>
               ))}
@@ -335,7 +365,7 @@ export default function AboutClient() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="lg:col-span-12 flex flex-col mt-4"
           >
-            <h2 className="text-2xl font-bold text-foreground mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
               Certificates & Achievements
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -365,7 +395,7 @@ export default function AboutClient() {
                     )}
                   </div>
                   <div className="relative z-10">
-                    <h3 className="font-bold text-lg text-foreground line-clamp-1">{cert.title}</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-foreground line-clamp-1">{cert.title}</h3>
                     <div className="flex justify-between items-center mt-1">
                       <span className="text-sm text-foreground/60">{cert.issuer}</span>
                       <span className="text-xs font-semibold px-2 py-1 bg-foreground/10 rounded-md text-foreground/70">{cert.date}</span>
@@ -376,44 +406,53 @@ export default function AboutClient() {
             </div>
           </motion.div>
 
-          {/* 5. Let's Connect - Spans Full Width */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className={`lg:col-span-12 flex flex-col items-center text-center py-16 lg:py-24 mt-8`}
-          >
-
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">{t("about.connect.title")}</h2>
-            <p className="text-foreground/70 mb-10 text-lg md:text-xl max-w-2xl mx-auto">
-              {t("about.connect.desc")}
-            </p>
-            <form className="space-y-6 w-full max-w-4xl relative z-10 mx-auto text-left">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="sr-only">Name</label>
-                  <input type="text" id="name" className="w-full bg-background/50 border border-foreground/10 hover:border-foreground/20 rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-accent-teal transition-all" placeholder={t("about.connect.name")} />
-                </div>
-                <div>
-                  <label htmlFor="email" className="sr-only">Email</label>
-                  <input type="email" id="email" className="w-full bg-background/50 border border-foreground/10 hover:border-foreground/20 rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-accent-teal transition-all" placeholder={t("about.connect.email")} />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="message" className="sr-only">Message</label>
-                <textarea id="message" rows={5} className="w-full bg-background/50 border border-foreground/10 hover:border-foreground/20 rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-accent-teal transition-all resize-none" placeholder={t("about.connect.message")}></textarea>
-              </div>
-              <div className="mt-8">
-                <button type="button" className="w-full px-10 py-4 bg-foreground hover:bg-foreground/90 text-background font-bold rounded-2xl transition-transform hover:scale-105 active:scale-95 shadow-xl">
-                  {t("about.connect.send")}
-                </button>
-              </div>
-            </form>
-          </motion.div>
-
         </div>
       </div>
+
+      {/* 5. Let's Connect - Spans Full Screen Width */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className={`w-full relative z-10`}
+      >
+        <section className="pt-14 pb-32 w-full">
+            <div className="w-full text-foreground/80 flex flex-col items-center">
+                <div className="text-center px-4 max-w-2xl">
+                    <h2 className="text-foreground text-4xl font-bold sm:text-5xl">
+                        Keep in touch
+                    </h2>
+                    <p className="mt-3 text-foreground/70">
+                        We’re here to help and answer any question you might have. We look forward to hearing from you.
+                    </p>
+                </div>
+                <div className="w-full mt-12 px-4 sm:px-8">
+                    <ul className="flex flex-col sm:flex-row items-stretch w-full max-w-5xl mx-auto">
+                        {contactMethods.map((item, idx) => (
+                            <li key={idx} className={`flex-1 flex flex-col items-start gap-4 px-6 md:px-12 py-8 sm:py-0 ${idx !== 0 ? 'border-t sm:border-t-0 sm:border-l border-foreground/10' : ''}`}>
+                                <div className="w-12 h-12 shrink-0 rounded-full border border-white/40 dark:border-white/20 bg-white/10 dark:bg-white/[0.05] backdrop-blur-md shadow-[inset_0_0_12px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.1)] flex items-center justify-center text-foreground">
+                                    {item.icon}
+                                </div>
+                                <div className="flex flex-col items-start text-left space-y-2">
+                                    <h4 className="text-foreground text-lg font-medium xl:text-xl">
+                                        {item.title}
+                                    </h4>
+                                    <p className="text-foreground/70">
+                                        {item.desc}
+                                    </p>
+                                    <a href={item.link.href} target="_blank" rel="noopener noreferrer" className="mt-4 flex w-fit items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-accent-teal bg-accent-teal/10 dark:bg-accent-teal/20 backdrop-blur-md border border-white/50 dark:border-white/20 shadow-[inset_0_0_12px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.1)] hover:bg-accent-teal/20 dark:hover:bg-accent-teal/30 hover:scale-105 transition-all duration-300">
+                                        {item.link.name}
+                                        <ArrowRight className="w-4 h-4" />
+                                    </a>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </section>
+      </motion.div>
       
       {mounted && createPortal(modalContent, document.body)}
     </ViewTransition>

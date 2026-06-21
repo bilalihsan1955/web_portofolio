@@ -9,16 +9,16 @@ import ProjectCard from "@/components/ProjectCard";
 import { useLanguage } from "@/app/providers";
 import { projects } from "@/lib/data/projects";
 
-const categories = ["Semua (All)", "Web", "Mobile", "IoT", "UI/UX"];
+const categories = ["All", "Web", "Mobile", "IoT", "UI/UX"];
 
 
 
 export default function Portfolio() {
   const pathname = usePathname();
-  const [activeCategory, setActiveCategory] = useState("Semua (All)");
+  const [activeCategory, setActiveCategory] = useState("All");
   const { t } = useLanguage();
 
-  const filteredProjects = activeCategory === "Semua (All)"
+  const filteredProjects = activeCategory === "All"
     ? projects
     : projects.filter(project => project.category === activeCategory);
 
@@ -70,7 +70,7 @@ export default function Portfolio() {
                   : "text-foreground/70 hover:text-foreground hover:bg-white/5 dark:hover:bg-white/[0.05] hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_2px_rgba(255,255,255,0.2)] dark:hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_2px_rgba(255,255,255,0.1)]"
                   }`}
               >
-                {category}
+                {category === "All" ? t("portfolio.category.all" as any) : category}
               </button>
             ))}
           </div>
