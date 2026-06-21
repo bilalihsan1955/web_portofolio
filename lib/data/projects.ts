@@ -44,8 +44,8 @@ export const projects: ProjectData[] = [
     },
     liveDemoLink: "https://play.google.com/store/apps/details?id=id.smartkampung.app",
     imageAssets: [
-      "/images/porto/Smart Kampung/banner_smartkampung.png",
-      "/images/porto/Smart Kampung/smart kampung onboarding screen.png.webp",
+      "/images/porto/Smart Kampung/banner_smartkampung.webp",
+      "/images/porto/Smart Kampung/smart kampung onboarding screen.webp",
       "/images/porto/Smart Kampung/smart kampung login screen.webp",
       "/images/porto/Smart Kampung/smart kampung home screen.webp",
       "/images/porto/Smart Kampung/smart kampung layanan screen.webp",
@@ -53,8 +53,8 @@ export const projects: ProjectData[] = [
       "/images/porto/Smart Kampung/smart kampung sipundiwangi screen.webp",
       "/images/porto/Smart Kampung/smart kampung live cctv screen.webp",
       "/images/porto/Smart Kampung/smart kampung profile screen.webp",
-      "/images/porto/Smart Kampung/zoom meeting dengan kominfo banyuwangi.jpg",
-      "/images/porto/Smart Kampung/zoom meeting dengan seluruh pihak terkait.jpg"
+      "/images/porto/Smart Kampung/zoom meeting dengan kominfo banyuwangi.webp",
+      "/images/porto/Smart Kampung/zoom meeting dengan seluruh pihak terkait.webp"
     ]
   },
   {
@@ -78,23 +78,50 @@ export const projects: ProjectData[] = [
     },
     liveDemoLink: "https://mustaka.co.id/",
     imageAssets: [
-      "/images/porto/Mustaka/Banner.png",
-      "/images/porto/Mustaka/Apa Itu Mustaka.png",
-      "/images/porto/Mustaka/Beranda.png",
-      "/images/porto/Mustaka/Kuratorial Jelajahi Singhasari 1.png",
-      "/images/porto/Mustaka/Kuratorial Singhasari 2.png",
-      "/images/porto/Mustaka/Motion Capture Ken Arok.png",
-      "/images/porto/Mustaka/Pilih Carakter.png",
-      "/images/porto/Mustaka/Section Kuratorial dan motion capture.png",
-      "/images/porto/Mustaka/Section Partnership.png",
+      "/images/porto/Mustaka/Banner.webp",
+      "/images/porto/Mustaka/Apa Itu Mustaka.webp",
+      "/images/porto/Mustaka/Beranda.webp",
+      "/images/porto/Mustaka/Kuratorial Jelajahi Singhasari 1.webp",
+      "/images/porto/Mustaka/Kuratorial Jelajahi Singhasari 2.webp",
+      "/images/porto/Mustaka/Motion Capture Ken Arok.webp",
+      "/images/porto/Mustaka/Pilih Carakter.webp",
+      "/images/porto/Mustaka/Section Kuratorial dan motion capture.webp",
+      "/images/porto/Mustaka/Section Partnership.webp",
       "/images/porto/Mustaka/Video Pengujian Motion Capture.mp4",
-      "/images/porto/Mustaka/dokumentasi proses pengerjaan.jpg",
-      "/images/porto/Mustaka/dokumentasi proses pengerjaan serta diskusi dengan 3D artist.jpg",
-      "/images/porto/Mustaka/dokumentasi tim CCFS UB.jpg"
+      "/images/porto/Mustaka/dokumentasi proses pengerjaan.webp",
+      "/images/porto/Mustaka/dokumentasi proses pengerjaan serta diskusi dengan 3D artist.webp",
+      "/images/porto/Mustaka/dokumentasi tim CCFS UB.webp"
     ]
   },
   {
     id: 3,
+    slug: "kaizen-db-engine",
+    title: "Kaizen DB Engine",
+    category: "Web",
+    role: "Full-Stack Web Developer",
+    techStack: ["Laravel 11", "Tailwind CSS", "DaisyUI", "Alpine.js", "Chart.js", "MySQL"],
+    timeline: {
+      EN: "2024",
+      ID: "2024"
+    },
+    shortSummary: {
+      EN: "A comprehensive CRM dashboard designed for sales teams and management to track customer interactions, follow-ups, and salesman performance metrics.",
+      ID: "Dasbor CRM komprehensif yang dirancang untuk tim sales dan manajemen guna melacak interaksi pelanggan, tindak lanjut (follow-ups), dan matrik kinerja salesman."
+    },
+    fullDescription: {
+      EN: "Kaizen DB Engine is a comprehensive CRM dashboard designed exclusively for sales teams and management to track customer interactions, follow-ups, and salesman performance metrics. Built with Laravel 11 and a modern frontend stack (Tailwind CSS, DaisyUI, Alpine.js), the internal platform centralizes 'Big Data' leads, allowing salesmen to claim and manage potential clients within their specific branch. It tracks detailed automotive metrics, including customer progress statuses (Pending, SPK, DO), vehicle models, and chassis numbers. The system features dynamic real-time analytical dashboards using Chart.js and enforces a strict Role-Based Access Control (RBAC) architecture. This allows Admins and Branch Managers to oversee branch-wide operations, while Supervisors can directly monitor follow-up counts, claimed leads, and the individual performance of salesmen under their supervision.",
+      ID: "Kaizen DB Engine adalah dasbor CRM komprehensif yang dirancang eksklusif bagi tim sales dan manajemen untuk melacak interaksi pelanggan, tindak lanjut (follow-ups), dan matrik kinerja salesman. Dibangun menggunakan Laravel 11 dan stack frontend modern (Tailwind CSS, DaisyUI, Alpine.js), platform internal ini memusatkan prospek dari 'Big Data', memungkinkan salesman untuk mengambil (meng-'claim') dan mengelola klien potensial di cabang mereka masing-masing. Sistem ini melacak matrik secara mendetail, termasuk status perkembangan (seperti Pending, SPK, DO), model mobil, dan nomor rangka. Aplikasi ini dilengkapi dasbor analitik real-time yang dinamis menggunakan Chart.js dan menerapkan arsitektur Role-Based Access Control (RBAC) yang ketat. Hal ini memungkinkan Admin dan Kepala Cabang untuk mengawasi operasional cabang, sementara Supervisor dapat memantau secara langsung jumlah follow-up, prospek yang diklaim, serta kinerja individu dari salesman yang berada di bawah pengawasan mereka."
+    },
+    repositoryLink: "https://github.com/Fdjri/web_project_salesman",
+    imageAssets: [
+      "/images/porto/Kaizen DB Engine/Banner.webp",
+      "/images/porto/Kaizen DB Engine/Login Page.webp",
+      "/images/porto/Kaizen DB Engine/Dashboard Page.webp",
+      "/images/porto/Kaizen DB Engine/Laporan Page.webp"
+    ]
+  },
+  {
+    id: 4,
     slug: "automatic-rainfall-recorder",
     title: "Automatic Rainfall Recorder",
     category: "IoT",
@@ -120,7 +147,7 @@ export const projects: ProjectData[] = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     slug: "tracking-tractor-gateway",
     title: "Tracking Tractor Gateway",
     category: "IoT",
@@ -146,7 +173,7 @@ export const projects: ProjectData[] = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     slug: "digi-tree",
     title: "Digi Tree",
     category: "IoT",
@@ -172,7 +199,7 @@ export const projects: ProjectData[] = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     slug: "acacia-science",
     title: "Acacia Science",
     category: "UI/UX",
