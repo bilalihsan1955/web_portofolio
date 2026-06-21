@@ -40,6 +40,7 @@ const dictionary = {
     "about.connect.send": "Send Message",
     "portfolio.title": "My Work.",
     "portfolio.desc": "A collection of my recent works across Mobile Apps, Web Development, and IoT Systems.",
+    "portfolio.category.all": "All",
     "project.btn.playstore": "Get it on Google Play",
     "project.btn.website": "Live Demo"
   },
@@ -69,6 +70,7 @@ const dictionary = {
     "about.connect.send": "Kirim Pesan",
     "portfolio.title": "Karya Saya.",
     "portfolio.desc": "Koleksi karya terbaru saya di Aplikasi Mobile, Pengembangan Web, dan Sistem IoT.",
+    "portfolio.category.all": "Semua",
     "project.btn.playstore": "Unduh di Google Play",
     "project.btn.website": "Demo Langsung"
   }

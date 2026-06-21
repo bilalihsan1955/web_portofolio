@@ -54,7 +54,8 @@ export const projects: ProjectData[] = [
       "/images/porto/Smart Kampung/smart kampung live cctv screen.webp",
       "/images/porto/Smart Kampung/smart kampung profile screen.webp",
       "/images/porto/Smart Kampung/progres pengerjaan aplikasi.jpg",
-      "/images/porto/Smart Kampung/zoom meeting dengan kominfo banyuwangi.jpg"
+      "/images/porto/Smart Kampung/zoom meeting dengan kominfo banyuwangi.jpg",
+      "/images/porto/Smart Kampung/zoom meeting dengan seluruh pihak terkait.jpg"
     ]
   },
   {

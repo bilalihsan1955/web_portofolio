@@ -150,7 +150,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("home.featured.title")}</h2>
-              <p className="text-foreground/70 text-lg">{t("home.featured.desc")}</p>
+              <p className="text-foreground/70 text-lg max-w-[65ch] leading-[1.6]">{t("home.featured.desc")}</p>
             </div>
             <Link href="/portfolio" className="text-accent-coral font-semibold hover:underline mt-4 md:mt-0 flex items-center gap-1">
               {t("home.featured.link")} <ArrowRight className="w-4 h-4" />

@@ -81,13 +81,13 @@ export default function ProjectDetail() {
 
               {/* Role */}
               <div>
-                <h3 className="text-sm font-medium text-foreground/50 capitalize tracking-wide mb-2">Role</h3>
+                <h4 className="text-xs font-bold uppercase tracking-widest text-foreground/50 mb-2">Role</h4>
                 <p className="text-lg font-medium text-foreground">{project.role}</p>
               </div>
 
               {/* Tech Stack */}
               <div>
-                <h3 className="text-sm font-medium text-foreground/50 capitalize tracking-wide mb-3">Tech Stack</h3>
+                <h4 className="text-xs font-bold uppercase tracking-widest text-foreground/50 mb-3">Tech Stack</h4>
                 <div className="flex flex-wrap gap-2">
                   {project.techStack.map(tech => (
                     <span key={tech} className="px-4 py-1.5 rounded-full text-sm font-medium bg-black/5 dark:bg-white/[0.05] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_2px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_2px_rgba(255,255,255,0.1)] text-foreground/80 border border-transparent backdrop-blur-md">
@@ -99,7 +99,7 @@ export default function ProjectDetail() {
 
               {/* Timeline */}
               <div>
-                <h3 className="text-sm font-medium text-foreground/50 capitalize tracking-wide mb-3">Timeline</h3>
+                <h4 className="text-xs font-bold uppercase tracking-widest text-foreground/50 mb-3">Timeline</h4>
                 <div className="flex items-center gap-2 text-foreground font-medium">
                   <Calendar className="w-5 h-5 text-foreground/50" />
                   <span>{project.timeline[language as "EN" | "ID"]}</span>
@@ -152,8 +152,8 @@ export default function ProjectDetail() {
               )}
 
               {/* Description */}
-              <div className="prose prose-lg dark:prose-invert max-w-none text-foreground/80 leading-relaxed">
-                <p className="text-xl md:text-2xl font-light text-foreground mb-8 leading-normal">
+              <div className="text-lg leading-[1.7] max-w-[65ch] text-foreground/80">
+                <p className="text-xl md:text-2xl font-medium text-foreground mb-8 leading-normal">
                   {project.shortSummary[language as "EN" | "ID"]}
                 </p>
                 <div className="whitespace-pre-line">
