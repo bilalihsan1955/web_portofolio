@@ -74,7 +74,7 @@ export default function ProjectDetail() {
             <div className="w-full lg:w-1/3 flex flex-col space-y-8 lg:sticky lg:top-32 h-fit">
               <div>
                 <span className="text-accent-coral font-bold text-sm md:text-base tracking-wide capitalize mb-6 block">
-                  {project.category}
+                  {project.category.join(" & ")}
                 </span>
                 <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-tight">
                   {project.title}
