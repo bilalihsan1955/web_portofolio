@@ -20,7 +20,7 @@ export default function Portfolio() {
 
   const filteredProjects = activeCategory === "All"
     ? projects
-    : projects.filter(project => project.category === activeCategory);
+    : projects.filter(project => project.category.includes(activeCategory as any));
 
   return (
     <ViewTransition enter="fade-in" exit="fade-out" default="none">

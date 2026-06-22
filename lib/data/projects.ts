@@ -2,7 +2,7 @@ export interface ProjectData {
   id: number;
   slug: string;
   title: string;
-  category: "Web" | "Mobile" | "IoT" | "UI/UX";
+  category: ("Web" | "Mobile" | "IoT" | "UI/UX")[];
   role: string;
   techStack: string[];
   shortSummary: {
@@ -27,7 +27,7 @@ export const projects: ProjectData[] = [
     id: 1,
     slug: "smartkampung",
     title: "Banyuwangi Smartkampung",
-    category: "Mobile",
+    category: ["Mobile"],
     role: "Mobile Developer (UI & API Integration)",
     techStack: ["Flutter", "REST API"],
     timeline: {
@@ -61,9 +61,9 @@ export const projects: ProjectData[] = [
     id: 2,
     slug: "mustaka",
     title: "Mustaka",
-    category: "Web",
-    role: "Full-Stack Web & Creative Developer",
-    techStack: ["Next.js 16", "TypeScript", "React Three Fiber", "TensorFlow.js", "Tailwind CSS v4", "Supabase"],
+    category: ["Web", "UI/UX"],
+    role: "Full-Stack Web Developer & UI/UX Designer",
+    techStack: ["Next.js 16", "TypeScript", "React Three Fiber", "TensorFlow.js", "Tailwind CSS v4", "Supabase", "Figma"],
     timeline: {
       EN: "November 2025 - December 2025",
       ID: "November 2025 - Desember 2025"
@@ -73,8 +73,8 @@ export const projects: ProjectData[] = [
       ID: "Platform edukasi interaktif yang membawa pengguna masuk ke dalam Kerajaan Singhasari secara virtual dengan fitur AI Motion Capture langsung di browser."
     },
     fullDescription: {
-      EN: "Mustaka is an interactive educational platform that virtually transports users into the Singhasari Kingdom. For this project, I was recruited to collaborate with the team from the Center of Cultural Frontier Studies Universitas Brawijaya (CCFS UB). Built with Next.js 16 architecture, the application utilizes TensorFlow.js to deliver in-browser Motion Capture features, detecting user poses in real-time to match movements with 3D characters of Ken Arok & Ken Dedes (rendered using React Three Fiber). Backed by a solid backend with Supabase, Mustaka demonstrates a complex integration between WebGL, client-side Machine Learning, and modern architectural systems. Additionally, during its development, I was extensively assisted by AI technologies to optimize and accelerate the coding process.",
-      ID: "Mustaka adalah platform edukasi interaktif yang membawa pengguna masuk ke dalam Kerajaan Singhasari secara virtual. Dalam proyek ini, saya direkrut untuk bekerja sama dengan tim dari Center of Cultural Frontier Studies Universitas Brawijaya (CCFS UB). Dibangun dengan arsitektur Next.js 16, aplikasi ini menggunakan TensorFlow.js untuk menghadirkan fitur Motion Capture langsung di browser, mendeteksi pose pengguna secara real-time untuk mencocokkan gerakan dengan karakter 3D Ken Arok & Ken Dedes (dirender menggunakan React Three Fiber). Didukung oleh backend yang solid dengan Supabase, Mustaka mendemonstrasikan integrasi kompleks antara WebGL, Machine Learning sisi klien, dan sistem arsitektur modern. Selain itu, dalam proses pengerjaannya, saya juga sangat dibantu oleh teknologi AI untuk mengoptimalkan dan mempercepat penulisan kode."
+      EN: "Mustaka is an interactive educational platform that virtually transports users into the Singhasari Kingdom. For this project, I was recruited to collaborate with the team from the Center of Cultural Frontier Studies Universitas Brawijaya (CCFS UB), where I was responsible for both designing the UI/UX and developing the entire website. Built with Next.js 16 architecture, the application utilizes TensorFlow.js to deliver in-browser Motion Capture features, detecting user poses in real-time to match movements with 3D characters of Ken Arok & Ken Dedes (rendered using React Three Fiber). Backed by a solid backend with Supabase, Mustaka demonstrates a complex integration between WebGL, client-side Machine Learning, and modern architectural systems. Additionally, during its development, I was extensively assisted by AI technologies to optimize and accelerate the coding process.",
+      ID: "Mustaka adalah platform edukasi interaktif yang membawa pengguna masuk ke dalam Kerajaan Singhasari secara virtual. Dalam proyek ini, saya direkrut untuk bekerja sama dengan tim dari Center of Cultural Frontier Studies Universitas Brawijaya (CCFS UB), di mana saya bertanggung jawab penuh untuk mendesain UI/UX sekaligus mengembangkan keseluruhan website. Dibangun dengan arsitektur Next.js 16, aplikasi ini menggunakan TensorFlow.js untuk menghadirkan fitur Motion Capture langsung di browser, mendeteksi pose pengguna secara real-time untuk mencocokkan gerakan dengan karakter 3D Ken Arok & Ken Dedes (dirender menggunakan React Three Fiber). Didukung oleh backend yang solid dengan Supabase, Mustaka mendemonstrasikan integrasi kompleks antara WebGL, Machine Learning sisi klien, dan sistem arsitektur modern. Selain itu, dalam proses pengerjaannya, saya juga sangat dibantu oleh teknologi AI untuk mengoptimalkan dan mempercepat penulisan kode."
     },
     liveDemoLink: "https://mustaka.co.id/",
     imageAssets: [
@@ -97,22 +97,22 @@ export const projects: ProjectData[] = [
     id: 3,
     slug: "kaizen-db-engine",
     title: "Kaizen DB Engine",
-    category: "Web",
-    role: "Full-Stack Web Developer",
+    category: ["Web"],
+    role: "Backend & Frontend Developer",
     techStack: ["Laravel 11", "Tailwind CSS", "DaisyUI", "Alpine.js", "Chart.js", "MySQL"],
     timeline: {
-      EN: "2024",
-      ID: "2024"
+      EN: "January - May 2024",
+      ID: "Januari - Mei 2024"
     },
     shortSummary: {
       EN: "A comprehensive CRM dashboard designed for sales teams and management to track customer interactions, follow-ups, and salesman performance metrics.",
       ID: "Dasbor CRM komprehensif yang dirancang untuk tim sales dan manajemen guna melacak interaksi pelanggan, tindak lanjut (follow-ups), dan matrik kinerja salesman."
     },
     fullDescription: {
-      EN: "Kaizen DB Engine is a comprehensive CRM dashboard designed exclusively for sales teams and management to track customer interactions, follow-ups, and salesman performance metrics. Built with Laravel 11 and a modern frontend stack (Tailwind CSS, DaisyUI, Alpine.js), the internal platform centralizes 'Big Data' leads, allowing salesmen to claim and manage potential clients within their specific branch. It tracks detailed automotive metrics, including customer progress statuses (Pending, SPK, DO), vehicle models, and chassis numbers. The system features dynamic real-time analytical dashboards using Chart.js and enforces a strict Role-Based Access Control (RBAC) architecture. This allows Admins and Branch Managers to oversee branch-wide operations, while Supervisors can directly monitor follow-up counts, claimed leads, and the individual performance of salesmen under their supervision.",
-      ID: "Kaizen DB Engine adalah dasbor CRM komprehensif yang dirancang eksklusif bagi tim sales dan manajemen untuk melacak interaksi pelanggan, tindak lanjut (follow-ups), dan matrik kinerja salesman. Dibangun menggunakan Laravel 11 dan stack frontend modern (Tailwind CSS, DaisyUI, Alpine.js), platform internal ini memusatkan prospek dari 'Big Data', memungkinkan salesman untuk mengambil (meng-'claim') dan mengelola klien potensial di cabang mereka masing-masing. Sistem ini melacak matrik secara mendetail, termasuk status perkembangan (seperti Pending, SPK, DO), model mobil, dan nomor rangka. Aplikasi ini dilengkapi dasbor analitik real-time yang dinamis menggunakan Chart.js dan menerapkan arsitektur Role-Based Access Control (RBAC) yang ketat. Hal ini memungkinkan Admin dan Kepala Cabang untuk mengawasi operasional cabang, sementara Supervisor dapat memantau secara langsung jumlah follow-up, prospek yang diklaim, serta kinerja individu dari salesman yang berada di bawah pengawasan mereka."
+      EN: "Kaizen DB Engine is a comprehensive CRM dashboard designed exclusively for sales teams and management to track customer interactions, follow-ups, and salesman performance metrics. Built with Laravel 11 and a modern frontend stack (Tailwind CSS, DaisyUI, Alpine.js), the internal platform centralizes 'Big Data' leads, allowing salesmen to claim and manage potential clients within their specific branch. It tracks detailed automotive metrics, including customer progress statuses (Pending, SPK, DO), vehicle models, and chassis numbers. The system features dynamic real-time analytical dashboards using Chart.js and enforces a strict Role-Based Access Control (RBAC) architecture. In this project, I collaborated within a team, focusing primarily on developing the robust backend system and API, while also contributing to several frontend components.",
+      ID: "Kaizen DB Engine adalah dasbor CRM komprehensif yang dirancang eksklusif bagi tim sales dan manajemen untuk melacak interaksi pelanggan, tindak lanjut (follow-ups), dan matrik kinerja salesman. Dibangun menggunakan Laravel 11 dan stack frontend modern (Tailwind CSS, DaisyUI, Alpine.js), platform internal ini memusatkan prospek dari 'Big Data', memungkinkan salesman untuk mengambil (meng-'claim') dan mengelola klien potensial di cabang mereka masing-masing. Sistem ini melacak matrik secara mendetail, termasuk status perkembangan (seperti Pending, SPK, DO), model mobil, dan nomor rangka. Aplikasi ini dilengkapi dasbor analitik real-time yang dinamis menggunakan Chart.js dan menerapkan arsitektur Role-Based Access Control (RBAC) yang ketat. Dalam proyek ini, saya berkolaborasi di dalam tim dengan tanggung jawab utama membangun arsitektur backend yang solid, sekaligus turut mengerjakan sebagian komponen di sisi frontend."
     },
-    repositoryLink: "https://github.com/Fdjri/web_project_salesman",
+    repositoryLink: "https://github.com/bilalihsan1955/web_project_salesman.git",
     imageAssets: [
       "/images/porto/Kaizen DB Engine/Banner.webp",
       "/images/porto/Kaizen DB Engine/Login Page.webp",
@@ -124,7 +124,7 @@ export const projects: ProjectData[] = [
     id: 4,
     slug: "automatic-rainfall-recorder",
     title: "Automatic Rainfall Recorder",
-    category: "IoT",
+    category: ["IoT"],
     role: "Embedded Systems Engineer",
     techStack: ["IoT", "ESP32-S3", "C++", "Modbus", "Next.js"],
     timeline: {
@@ -150,7 +150,7 @@ export const projects: ProjectData[] = [
     id: 5,
     slug: "tracking-tractor-gateway",
     title: "Tracking Tractor Gateway",
-    category: "IoT",
+    category: ["IoT"],
     role: "Hardware & Firmware Developer",
     techStack: ["ESP32-S3", "RS485", "C++", "GPS", "MQTT"],
     timeline: {
@@ -176,7 +176,7 @@ export const projects: ProjectData[] = [
     id: 6,
     slug: "digi-tree",
     title: "Digi Tree",
-    category: "IoT",
+    category: ["IoT"],
     role: "Full-Stack IoT Developer",
     techStack: ["Arduino", "Node.js", "React", "Sensors", "WebSockets"],
     timeline: {
@@ -202,7 +202,7 @@ export const projects: ProjectData[] = [
     id: 7,
     slug: "acacia-science",
     title: "Acacia Science",
-    category: "UI/UX",
+    category: ["UI/UX"],
     role: "UI/UX Designer",
     techStack: ["Figma", "Prototyping", "Design Systems", "User Research"],
     timeline: {
