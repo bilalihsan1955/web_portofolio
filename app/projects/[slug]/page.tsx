@@ -6,6 +6,7 @@ import { ExternalLink, Github, Calendar } from "lucide-react";
 import { projects } from "@/lib/data/projects";
 import { useLanguage } from "@/app/providers";
 import { ViewTransition } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ProjectGallery from "@/components/ProjectGallery";
@@ -14,6 +15,7 @@ export default function ProjectDetail() {
   const params = useParams();
   const pathname = usePathname();
   const { language, t } = useLanguage();
+  const [isBannerLoaded, setIsBannerLoaded] = useState(false);
 
   const slug = params.slug as string;
   const project = projects.find(p => p.slug === slug);
@@ -139,14 +141,15 @@ export default function ProjectDetail() {
 
               {/* Hero Image / Banner */}
               {project.imageAssets && project.imageAssets.length > 0 && (
-                <div className="w-full aspect-[16/9] relative rounded-3xl overflow-hidden mb-16">
+                <div className={`w-full aspect-[16/9] relative rounded-3xl overflow-hidden mb-16 bg-foreground/5 ${!isBannerLoaded ? 'animate-pulse' : ''}`}>
                   <Image
                     src={project.imageAssets[0]}
                     alt={`${project.title} Hero Image`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 66vw"
-                    className="object-cover"
+                    className={`object-cover transition-opacity duration-700 ${isBannerLoaded ? 'opacity-100' : 'opacity-0'}`}
                     priority
+                    onLoad={() => setIsBannerLoaded(true)}
                   />
                 </div>
               )}
