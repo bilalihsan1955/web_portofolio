@@ -29,16 +29,33 @@ export const metadata: Metadata = {
     description: 'Portfolio of Bilal Al Ihsan, specializing in Web Development, Mobile Apps, UI/UX Design, and IoT integration.',
     url: 'https://bilalalihsan.my.id',
     siteName: 'Bilal Al Ihsan Portfolio',
+    images: [
+      {
+        url: '/certificate/Sertifikat_BNSP_Mobile_Bilal%20Al%20Ihsan_TTD_page-0001.jpg', // Saran: Ganti dengan banner khusus OG Image (1200x630) nanti.
+        width: 1200,
+        height: 630,
+        alt: 'Bilal Al Ihsan Portfolio',
+      },
+    ],
     locale: 'en_US',
+    alternateLocale: ['id_ID'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Bilal Al Ihsan | Web, Mobile & UI/UX Developer',
     description: 'Portfolio of Bilal Al Ihsan, specializing in Web Development, Mobile Apps, UI/UX Design, and IoT integration.',
+    images: ['/certificate/Sertifikat_BNSP_Mobile_Bilal%20Al%20Ihsan_TTD_page-0001.jpg'],
   },
   verification: {
     google: 'aPbYfzvv-ZLdpzF7ZyxsX6CfD8k9EXtE9edm_8n9qwo',
+  },
+  alternates: {
+    canonical: 'https://bilalalihsan.my.id',
+    languages: {
+      'en-US': 'https://bilalalihsan.my.id',
+      'id-ID': 'https://bilalalihsan.my.id',
+    },
   },
 };
 

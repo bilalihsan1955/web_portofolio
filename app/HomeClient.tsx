@@ -66,7 +66,7 @@ export default function Home() {
   return (
     <ViewTransition enter="fade-in" exit="fade-out" default="none">
       {/* Massive Poster Background - Home */}
-      <div className="fixed top-0 left-0 w-screen h-screen -z-[100] pointer-events-none overflow-hidden opacity-10">
+      <div className="fixed top-0 left-0 w-screen h-screen -z-[100] pointer-events-none overflow-hidden opacity-10 animate-float-slow will-change-transform">
         <motion.svg
           key={pathname}
           className="w-full h-full text-accent-teal"
@@ -79,12 +79,9 @@ export default function Home() {
             stroke="currentColor"
             strokeWidth={80}
             strokeLinecap="round"
-            initial={{ pathLength: 0, y: 0 }}
-            animate={{ pathLength: 1, y: [0, -40, 0] }}
-            transition={{
-              pathLength: { duration: 4, ease: "easeInOut" },
-              y: { duration: 15, ease: "easeInOut", repeat: Infinity }
-            }}
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 4, ease: "easeInOut" }}
           />
         </motion.svg>
       </div>

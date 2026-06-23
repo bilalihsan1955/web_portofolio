@@ -30,11 +30,17 @@
   --font-sans: var(--font-jakarta);
   --animate-marquee: marquee 20s linear infinite;
   --animate-marquee-slow: marquee 25s linear infinite;
+  --animate-float-slow: float-slow 15s ease-in-out infinite;
 }
 
 @keyframes marquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-40px); }
 }
 
 body {

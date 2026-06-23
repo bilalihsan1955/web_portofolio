@@ -238,7 +238,7 @@ export default function AboutClient() {
   return (
     <ViewTransition enter="fade-in" exit="fade-out" default="none">
       {/* Massive Poster Background */}
-      <div className="fixed top-[10%] left-0 w-screen h-screen -z-[100] pointer-events-none overflow-hidden opacity-10">
+      <div className="fixed top-[10%] left-0 w-screen h-screen -z-[100] pointer-events-none overflow-hidden opacity-10 animate-float-slow will-change-transform">
         <motion.svg
           key={pathname}
           className="w-full h-full text-accent-teal"
@@ -251,12 +251,9 @@ export default function AboutClient() {
             stroke="currentColor"
             strokeWidth={80}
             strokeLinecap="round"
-            initial={{ pathLength: 0, y: 0 }}
-            animate={{ pathLength: 1, y: [0, -30, 0] }}
-            transition={{
-              pathLength: { duration: 5, ease: "easeInOut" },
-              y: { duration: 15, ease: "easeInOut", repeat: Infinity }
-            }}
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 5, ease: "easeInOut" }}
           />
         </motion.svg>
       </div>
@@ -398,6 +395,7 @@ export default function AboutClient() {
                       src={cert.images[0]} 
                       alt={cert.title} 
                       fill 
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover group-hover/cert:scale-105 transition-transform duration-500" 
                     />
                     {cert.images.length > 1 && (

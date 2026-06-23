@@ -31,11 +31,7 @@ export default function ProjectDetailClient() {
   return (
     <ViewTransition enter="fade-in" exit="fade-out" default="none">
       {/* Massive Poster Background - Project Detail */}
-      <motion.div 
-        className="fixed top-0 left-0 w-screen h-screen -z-[100] pointer-events-none overflow-hidden opacity-10"
-        animate={{ y: [0, -30, 0] }}
-        transition={{ duration: 15, ease: "easeInOut", repeat: Infinity }}
-      >
+      <div className="fixed top-0 left-0 w-screen h-screen -z-[100] pointer-events-none overflow-hidden opacity-10 animate-float-slow will-change-transform">
         <motion.svg
           key={pathname}
           className="w-full h-full text-accent-teal"
@@ -59,7 +55,7 @@ export default function ProjectDetailClient() {
             transition={{ duration: 5, ease: "easeInOut" }}
           />
         </motion.svg>
-      </motion.div>
+      </div>
 
       <div className="min-h-screen w-full relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 
