@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://bilalalihsan.com/sitemap.xml',
+    sitemap: 'https://bilalalihsan.my.id/sitemap.xml',
   };
 }
