@@ -36,48 +36,61 @@ const toolsPlatforms = [
 const contactMethods = [
   {
     icon: <Linkedin className="w-6 h-6" />,
-    title: "Connect on LinkedIn",
-    desc: "Let's build a professional network and explore opportunities.",
+    title: { EN: "Connect on LinkedIn", ID: "Terhubung di LinkedIn" },
+    desc: { EN: "Let's build a professional network and explore opportunities.", ID: "Mari bangun jaringan profesional dan jelajahi berbagai peluang." },
     link: {
-      name: "Visit Profile",
-      href: "https://www.linkedin.com/in/bilalalihsan"
+      name: { EN: "Visit Profile", ID: "Kunjungi Profil" },
+      href: "https://www.linkedin.com/in/bilal-al-ihsan-944405269/"
     },
   },
   {
     icon: <Mail className="w-6 h-6" />,
-    title: "Email Me",
-    desc: "Have a project in mind? Send me an email and let's talk.",
+    title: { EN: "Email Me", ID: "Email Saya" },
+    desc: { EN: "Have a project in mind? Send me an email and let's talk.", ID: "Memiliki ide proyek? Kirimkan email dan mari kita bicarakan." },
     link: {
-      name: "contact@bilalalihsan.com",
-      href: "mailto:contact@bilalalihsan.com"
+      name: { EN: "bilalihsan1955@gmail.com", ID: "bilalihsan1955@gmail.com" },
+      href: "mailto:bilalihsan1955@gmail.com"
     },
   },
   {
     icon: <Instagram className="w-6 h-6" />,
-    title: "Follow on Instagram",
-    desc: "See my daily updates, design inspirations, and behind-the-scenes.",
+    title: { EN: "Follow on Instagram", ID: "Ikuti di Instagram" },
+    desc: { EN: "See my daily updates, design inspirations, and behind-the-scenes.", ID: "Lihat pembaruan harian, inspirasi desain, dan di balik layar proses saya." },
     link: {
-      name: "Follow @bilalalihsan",
-      href: "https://instagram.com/bilalalihsan"
+      name: { EN: "Follow @bilalihsan__", ID: "Ikuti @bilalihsan__" },
+      href: "https://www.instagram.com/bilalihsan__"
     },
   },
 ];
 
 const timeline = [
   {
-    year: "Present",
-    title: "Final-year D3 Student",
-    description: "Universitas Brawijaya, Malang. Focusing on practical software engineering and embedded systems.",
+    year: {
+      EN: "August 2024 - August 2025",
+      ID: "Agustus 2024 - Agustus 2025"
+    },
+    title: {
+      EN: "Member of Provoks (Programmer Vokasi)",
+      ID: "Anggota Provoks (Programmer Vokasi)"
+    },
+    description: {
+      EN: "Actively participated as a member of Provoks (Programmer Vokasi), engaging in various activities such as workshops and technical discussions to deepen understanding of backend technologies and the latest industry trends.",
+      ID: "Berpartisipasi aktif sebagai anggota Provoks (Programmer Vokasi), terlibat dalam berbagai kegiatan seperti workshop dan diskusi teknis untuk memperdalam pemahaman tentang teknologi backend dan tren industri terbaru."
+    }
   },
   {
-    year: "2023 - Present",
-    title: "Freelance Full-stack Developer",
-    description: "Delivering custom web applications, mobile apps, and IoT hardware integrations for various clients.",
-  },
-  {
-    year: "2022",
-    title: "UI/UX Design Focus",
-    description: "Transitioning from pure design concepts in Figma to robust, scalable frontend development.",
+    year: {
+      EN: "August 2023 - Present",
+      ID: "Agustus 2023 - Sekarang"
+    },
+    title: {
+      EN: "D3 Information Technology Student",
+      ID: "Mahasiswa D3 Teknologi Informasi"
+    },
+    description: {
+      EN: "Universitas Brawijaya, Malang. Focusing on practical software engineering, mobile development, and UI/UX design.",
+      ID: "Universitas Brawijaya, Malang. Berfokus pada rekayasa perangkat lunak praktis, pengembangan mobile, dan desain UI/UX."
+    }
   }
 ];
 
@@ -107,7 +120,7 @@ const mockCertificates: Certificate[] = [
 
 export default function AboutClient() {
   const pathname = usePathname();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   const [selectedCertIndex, setSelectedCertIndex] = useState<number | null>(null);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
@@ -349,9 +362,9 @@ export default function AboutClient() {
             <div className="flex flex-col gap-12">
               {timeline.map((item, idx) => (
                 <div key={idx} className="flex flex-col">
-                  <span className="text-sm font-bold text-accent-coral tracking-wide mb-2">{item.year}</span>
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2 tracking-tight">{item.title}</h3>
-                  <p className="text-foreground/60 text-base leading-relaxed">{item.description}</p>
+                  <span className="text-sm font-bold text-accent-coral tracking-wide mb-2">{item.year[language as "EN" | "ID"]}</span>
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2 tracking-tight">{item.title[language as "EN" | "ID"]}</h3>
+                  <p className="text-foreground/60 text-base leading-relaxed">{item.description[language as "EN" | "ID"]}</p>
                 </div>
               ))}
             </div>
@@ -366,7 +379,7 @@ export default function AboutClient() {
             className="lg:col-span-12 flex flex-col mt-4"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-              Certificates & Achievements
+              {language === "ID" ? "Sertifikat & Pencapaian" : "Certificates & Achievements"}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {mockCertificates.map((cert) => (
@@ -421,10 +434,10 @@ export default function AboutClient() {
             <div className="w-full text-foreground/80 flex flex-col items-center">
                 <div className="text-center px-4 max-w-2xl">
                     <h2 className="text-foreground text-4xl font-bold sm:text-5xl">
-                        Keep in touch
+                        {language === "ID" ? "Tetap Terhubung" : "Keep in touch"}
                     </h2>
                     <p className="mt-3 text-foreground/70">
-                        We’re here to help and answer any question you might have. We look forward to hearing from you.
+                        {language === "ID" ? "Saya siap membantu dan menjawab pertanyaan yang mungkin Anda miliki. Saya menantikan pesan dari Anda." : "We’re here to help and answer any question you might have. We look forward to hearing from you."}
                     </p>
                 </div>
                 <div className="w-full mt-12 px-4 sm:px-8">
@@ -436,13 +449,13 @@ export default function AboutClient() {
                                 </div>
                                 <div className="flex flex-col items-start text-left space-y-2">
                                     <h4 className="text-foreground text-lg font-medium xl:text-xl">
-                                        {item.title}
+                                        {item.title[language as "EN" | "ID"]}
                                     </h4>
                                     <p className="text-foreground/70">
-                                        {item.desc}
+                                        {item.desc[language as "EN" | "ID"]}
                                     </p>
                                     <a href={item.link.href} target="_blank" rel="noopener noreferrer" className="mt-4 flex w-fit items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-accent-teal bg-accent-teal/10 dark:bg-accent-teal/20 backdrop-blur-md border border-white/50 dark:border-white/20 shadow-[inset_0_0_12px_rgba(255,255,255,0.5)] dark:shadow-[inset_0_0_12px_rgba(255,255,255,0.1)] hover:bg-accent-teal/20 dark:hover:bg-accent-teal/30 hover:scale-105 transition-all duration-300">
-                                        {item.link.name}
+                                        {item.link.name[language as "EN" | "ID"]}
                                         <ArrowRight className="w-4 h-4" />
                                     </a>
                                 </div>

@@ -3,7 +3,7 @@ import AboutClient from "./AboutClient";
 
 export const metadata: Metadata = {
   title: "About Me",
-  description: "Learn more about my professional journey, academic background, and the tech stack I use to build robust applications.",
+  description: "Learn more about Bilal Al Ihsan's academic journey as an Information Technology student at Universitas Brawijaya, and his tech stack in Web, Mobile, and UI/UX.",
 };
 
 export default function Page() {

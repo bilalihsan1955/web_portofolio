@@ -17,12 +17,15 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://bilalalihsan.com'),
   title: {
     template: '%s | Bilal Al Ihsan',
-    default: 'Bilal Al Ihsan | Software Engineer & UI/UX Designer',
+    default: 'Bilal Al Ihsan | Web, Mobile & UI/UX Developer',
   },
-  description: 'Portfolio of Bilal Al Ihsan, a Developer and Project Manager specializing in Next.js, Laravel, Flutter, and embedded systems.',
+  description: 'Portfolio of Bilal Al Ihsan, a final-year Information Technology student at Universitas Brawijaya specializing in Web Development, Mobile Apps, UI/UX Design, and IoT integration.',
+  keywords: ['Bilal Al Ihsan', 'Web Developer', 'Mobile Developer', 'UI/UX Designer', 'Frontend Developer', 'Flutter', 'Next.js', 'Universitas Brawijaya', 'Software Engineer', 'IoT', 'Programmer Vokasi'],
+  authors: [{ name: 'Bilal Al Ihsan' }],
+  creator: 'Bilal Al Ihsan',
   openGraph: {
-    title: 'Bilal Al Ihsan | Software Engineer',
-    description: 'Portfolio of Bilal Al Ihsan, a Developer and Project Manager specializing in Next.js, Laravel, Flutter, and embedded systems.',
+    title: 'Bilal Al Ihsan | Web, Mobile & UI/UX Developer',
+    description: 'Portfolio of Bilal Al Ihsan, specializing in Web Development, Mobile Apps, UI/UX Design, and IoT integration.',
     url: 'https://bilalalihsan.com',
     siteName: 'Bilal Al Ihsan Portfolio',
     locale: 'en_US',
@@ -30,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bilal Al Ihsan | Software Engineer',
-    description: 'Portfolio of Bilal Al Ihsan, a Developer and Project Manager specializing in Next.js, Laravel, Flutter, and embedded systems.',
+    title: 'Bilal Al Ihsan | Web, Mobile & UI/UX Developer',
+    description: 'Portfolio of Bilal Al Ihsan, specializing in Web Development, Mobile Apps, UI/UX Design, and IoT integration.',
   },
 };
 
