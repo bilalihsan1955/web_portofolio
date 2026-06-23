@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     title: 'Bilal Al Ihsan | Web, Mobile & UI/UX Developer',
     description: 'Portfolio of Bilal Al Ihsan, specializing in Web Development, Mobile Apps, UI/UX Design, and IoT integration.',
   },
+  verification: {
+    google: 'aPbYfzvv-ZLdpzF7ZyxsX6CfD8k9EXtE9edm_8n9qwo',
+  },
 };
 
 export default function RootLayout({
